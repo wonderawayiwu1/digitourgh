@@ -8,8 +8,22 @@ const MODEL = 'openai/gpt-oss-120b';
  * - Use bracket access so esbuild does not bake an empty value at build time
  */
 function getApiKey() {
-  const raw = process.env['GROQ_API_KEY'] || process.env['GROQ_KEY'] || '';
-  let key = String(raw).trim();
+  let raw = process.env['GROQ_API_KEY'] || process.env['GROQ_KEY'] || '';
+  if (!raw) {
+    try {
+      const fs = require('fs');
+      const path = require('path');
+      const envPath = path.resolve(__dirname, '../../.env');
+      if (fs.existsSync(envPath)) {
+        const content = fs.readFileSync(envPath, 'utf8');
+        const match = content.match(/^GROQ_API_KEY\s*=\s*["']?([^"'\r\n]+)["']?/m);
+        if (match && match[1]) {
+          raw = match[1];
+        }
+      }
+    } catch (_) {}
+  }
+  let key = String(raw || '').trim();
   // Strip wrapping quotes and accidental "GROQ_API_KEY=" prefix
   if ((key.startsWith('"') && key.endsWith('"')) || (key.startsWith("'") && key.endsWith("'"))) {
     key = key.slice(1, -1).trim();
@@ -52,6 +66,14 @@ function siteBase(event) {
 }
 
 async function loadJSON(base, file) {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const localPath = path.resolve(__dirname, '../../data', file);
+    if (fs.existsSync(localPath)) {
+      return JSON.parse(fs.readFileSync(localPath, 'utf8'));
+    }
+  } catch (_) {}
   const res = await fetch(`${base}/data/${file}`);
   if (!res.ok) throw new Error(`Failed to load ${file}`);
   return res.json();

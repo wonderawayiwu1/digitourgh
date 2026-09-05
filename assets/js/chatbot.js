@@ -10,20 +10,20 @@
   ];
 
   const EMOJI_ICONS = [
-    [/📞|☎️|📱/g, '<i class="fa-solid fa-phone dt-md-ico" aria-hidden="true"></i>'],
-    [/💬/g, '<i class="fab fa-whatsapp dt-md-ico dt-md-wa" aria-hidden="true"></i>'],
-    [/🌟|⭐|✨|🎉|🔥/g, '<i class="fa-solid fa-star dt-md-ico dt-md-gold" aria-hidden="true"></i>'],
-    [/🏨|🛏️|🛏/g, '<i class="fa-solid fa-hotel dt-md-ico" aria-hidden="true"></i>'],
-    [/📍|📌|🗺️|🗺/g, '<i class="fa-solid fa-location-dot dt-md-ico" aria-hidden="true"></i>'],
-    [/💰|💵|💲/g, '<i class="fa-solid fa-tag dt-md-ico" aria-hidden="true"></i>'],
-    [/🔗/g, '<i class="fa-solid fa-link dt-md-ico" aria-hidden="true"></i>'],
-    [/👉|➡️|➡/g, '<i class="fa-solid fa-arrow-right dt-md-ico" aria-hidden="true"></i>'],
-    [/ℹ️|ℹ/g, '<i class="fa-solid fa-circle-info dt-md-ico" aria-hidden="true"></i>'],
-    [/⚠️|⚠/g, '<i class="fa-solid fa-triangle-exclamation dt-md-ico" aria-hidden="true"></i>'],
-    [/✅|✔️|✔/g, '<i class="fa-solid fa-circle-check dt-md-ico dt-md-ok" aria-hidden="true"></i>'],
-    [/❌|✖️|✖/g, '<i class="fa-solid fa-circle-xmark dt-md-ico" aria-hidden="true"></i>'],
-    [/👋|🙋/g, '<i class="fa-solid fa-hand dt-md-ico" aria-hidden="true"></i>'],
-    [/🌍|🌎|🌏/g, '<i class="fa-solid fa-globe-africa dt-md-ico" aria-hidden="true"></i>'],
+    [/📞|☎️|📱|☎/gu, '<i class="fa-solid fa-phone dt-md-ico" aria-hidden="true"></i>'],
+    [/💬|🗨️|🗯️/gu, '<i class="fab fa-whatsapp dt-md-ico dt-md-wa" aria-hidden="true"></i>'],
+    [/🌟|⭐|✨|🎉|🔥|👍|👏/gu, '<i class="fa-solid fa-star dt-md-ico dt-md-gold" aria-hidden="true"></i>'],
+    [/🏨|🛏️|🛏|🏢/gu, '<i class="fa-solid fa-hotel dt-md-ico" aria-hidden="true"></i>'],
+    [/📍|📌|🗺️|🗺|🧭|🏖️|🏖/gu, '<i class="fa-solid fa-location-dot dt-md-ico" aria-hidden="true"></i>'],
+    [/💰|💵|💲|💳|🏷️|🏷/gu, '<i class="fa-solid fa-tag dt-md-ico" aria-hidden="true"></i>'],
+    [/🔗/gu, '<i class="fa-solid fa-link dt-md-ico" aria-hidden="true"></i>'],
+    [/👉|➡️|➡|⏩/gu, '<i class="fa-solid fa-arrow-right dt-md-ico" aria-hidden="true"></i>'],
+    [/ℹ️|ℹ/gu, '<i class="fa-solid fa-circle-info dt-md-ico" aria-hidden="true"></i>'],
+    [/⚠️|⚠/gu, '<i class="fa-solid fa-triangle-exclamation dt-md-ico" aria-hidden="true"></i>'],
+    [/✅|✔️|✔/gu, '<i class="fa-solid fa-circle-check dt-md-ico dt-md-ok" aria-hidden="true"></i>'],
+    [/❌|✖️|✖/gu, '<i class="fa-solid fa-circle-xmark dt-md-ico" aria-hidden="true"></i>'],
+    [/👋|🙋|😀|😃|😄|😁|😊|🙂/gu, '<i class="fa-solid fa-hand dt-md-ico" aria-hidden="true"></i>'],
+    [/🌍|🌎|🌏|✈️|✈|🧳/gu, '<i class="fa-solid fa-globe-africa dt-md-ico" aria-hidden="true"></i>'],
   ];
 
   function esc(s) {
@@ -39,8 +39,8 @@
     EMOJI_ICONS.forEach(([re, html]) => {
       out = out.replace(re, html);
     });
-    // Strip leftover decorative emoji / symbols that look unprofessional
-    out = out.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '');
+    // Strip leftover decorative emojis completely
+    out = out.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}]/gu, '');
     return out;
   }
 
@@ -406,6 +406,140 @@
       msgs.scrollTop = msgs.scrollHeight;
     }
 
+    let cachedApiKey = null;
+    let cachedCatalog = null;
+
+    async function getLocalApiKey() {
+      if (cachedApiKey) return cachedApiKey;
+      if (window.GROQ_API_KEY) {
+        cachedApiKey = window.GROQ_API_KEY;
+        return cachedApiKey;
+      }
+      const dirPath = location.pathname.substring(0, location.pathname.lastIndexOf('/') + 1);
+      const candidatePaths = [
+        '.env',
+        './.env',
+        '/.env',
+        dirPath + '.env',
+        '/DigiTour_Frontend/.env'
+      ];
+      for (const p of candidatePaths) {
+        try {
+          const res = await fetch(p);
+          if (res.ok) {
+            const txt = await res.text();
+            const m = txt.match(/^GROQ_API_KEY\s*=\s*["']?([^"'\r\n]+)["']?/m);
+            if (m && m[1]) {
+              let k = m[1].trim();
+              if ((k.startsWith('"') && k.endsWith('"')) || (k.startsWith("'") && k.endsWith("'"))) {
+                k = k.slice(1, -1).trim();
+              }
+              if (k.toUpperCase().startsWith('GROQ_API_KEY=')) {
+                k = k.slice('GROQ_API_KEY='.length).trim();
+              }
+              k = k.replace(/^\uFEFF/, '').replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+              if (k && k.startsWith('gsk_')) {
+                cachedApiKey = k;
+                return cachedApiKey;
+              }
+            }
+          }
+        } catch (_) {}
+      }
+      return null;
+    }
+
+    async function getLocalCatalog() {
+      if (cachedCatalog) return cachedCatalog;
+      try {
+        const [dRes, hRes] = await Promise.all([
+          fetch('data/destinations.json').catch(() => fetch('data/destinations_catalog.json')),
+          fetch('data/hotels.json').catch(() => fetch('data/hotels_catalog.json'))
+        ]);
+        const destinations = (dRes && dRes.ok) ? await dRes.json() : [];
+        const hotels = (hRes && hRes.ok) ? await hRes.json() : [];
+        cachedCatalog = { destinations, hotels };
+      } catch (_) {
+        cachedCatalog = { destinations: [], hotels: [] };
+      }
+      return cachedCatalog;
+    }
+
+    async function askLocalFallback(q, historyList) {
+      // 1. Check if local node dev server is running on port 8888
+      if (location.port !== '8888') {
+        try {
+          const devRes = await fetch('http://localhost:8888/.netlify/functions/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: q, history: historyList.slice(-6) })
+          });
+          if (devRes.ok) {
+            const devData = await devRes.json();
+            if (devData && devData.answer) {
+              history.push({ role: 'assistant', content: devData.answer });
+              addBubble('assistant', devData.answer, 'Local Server (port 8888)');
+              return true;
+            }
+          }
+        } catch (_) {}
+      }
+
+      // 2. Direct browser fallback using .env GROQ_API_KEY
+      const apiKey = await getLocalApiKey();
+      if (!apiKey) return false;
+
+      const catalogData = await getLocalCatalog();
+      const destMatches = (catalogData.destinations || []).slice(0, 5);
+      const hotelMatches = (catalogData.hotels || []).slice(0, 5);
+
+      const systemPrompt = `You are DigiGuide, DigiTour Ghana's friendly tourism AI assistant.
+
+FORMATTING RULES (critical — replies show in a narrow mobile chat panel):
+- Use clean Markdown only: **bold**, *italic*, headings (###), bullet lists, numbered lists.
+- NEVER use emojis or emoji shortcodes. Use plain words or Markdown links/icons.
+- Turn booking/detail paths into markdown links: [Book now](book-hotel.html?hotel_id=ID) or [View destination](destination-detail.html?id=ID)
+- Keep answers concise.
+
+CATALOGUE HIGHLIGHTS:
+Destinations: ${destMatches.map(d => `${d.name || d.title} (${d.region || ''})`).join(', ')}
+Hotels: ${hotelMatches.map(h => `${h.name} (${h.price_per_night || h.price || '$95'}/night)`).join(', ')}`;
+
+      try {
+        const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: 'openai/gpt-oss-120b',
+            messages: [
+              { role: 'system', content: systemPrompt },
+              ...historyList.slice(-6).map(h => ({ role: h.role, content: h.content })),
+              { role: 'user', content: q }
+            ]
+          })
+        });
+
+        if (!groqRes.ok) {
+          const errData = await groqRes.json().catch(() => ({}));
+          const errMsg = (errData && errData.error && errData.error.message) || 'Groq API error';
+          addBubble('assistant', `Local API Error: ${errMsg}`);
+          return true;
+        }
+
+        const groqData = await groqRes.json();
+        const ans = (groqData.choices && groqData.choices[0] && groqData.choices[0].message && groqData.choices[0].message.content) || '';
+        if (ans) {
+          history.push({ role: 'assistant', content: ans });
+          addBubble('assistant', ans, 'Local Dev Fallback (Direct Groq API)');
+          return true;
+        }
+      } catch (_) {}
+      return false;
+    }
+
     async function ask(question) {
       const q = String(question || '').trim();
       if (!q) return;
@@ -422,34 +556,36 @@
           body: JSON.stringify({ message: q, history: history.slice(0, -1) }),
         });
         const data = await res.json().catch(() => ({}));
-        typing(false);
-        if (!res.ok) {
-          const err = data.error || 'Something went wrong.';
-          if (res.status === 404 || location.port === '5500' || location.port === '8765') {
-            addBubble(
-              'assistant',
-              'DigiGuide needs the Netlify function to reach Groq. Deploy to Netlify with **GROQ_API_KEY** set, or run `netlify dev` locally.',
-              '',
-              false
-            );
-          } else {
-            addBubble('assistant', err);
-          }
+        if (res.ok && data.answer) {
+          typing(false);
+          history.push({ role: 'assistant', content: data.answer });
+          const meta = data.usedWeb
+            ? 'Catalogue + web sources'
+            : data.matches
+              ? `Matched ${data.matches.destinations} sites · ${data.matches.hotels} hotels`
+              : '';
+          addBubble('assistant', data.answer, meta);
           return;
         }
-        const answer = data.answer || 'I could not find an answer.';
-        history.push({ role: 'assistant', content: answer });
-        const meta = data.usedWeb
-          ? 'Catalogue + web sources'
-          : data.matches
-            ? `Matched ${data.matches.destinations} sites · ${data.matches.hotels} hotels`
-            : '';
-        addBubble('assistant', answer, meta);
-      } catch (e) {
+
+        // Try local fallback if Netlify function endpoint is unavailable (e.g. on WAMP / localhost)
+        const handledLocally = await askLocalFallback(q, history.slice(0, -1));
         typing(false);
+        if (handledLocally) return;
+
+        if (!res.ok) {
+          const err = data.error || 'Something went wrong.';
+          addBubble('assistant', err);
+          return;
+        }
+      } catch (e) {
+        const handledLocally = await askLocalFallback(q, history.slice(0, -1));
+        typing(false);
+        if (handledLocally) return;
+
         addBubble(
           'assistant',
-          'Network error talking to DigiGuide. Use Netlify hosting or `netlify dev` so `/.netlify/functions/chat` is available.'
+          'Network error talking to DigiGuide. You can start local dev server using `node server.js` or deploy to Netlify.'
         );
       } finally {
         form.classList.remove('is-busy');
