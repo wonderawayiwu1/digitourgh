@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,10 +15,13 @@
   <link rel="stylesheet" href="assets/css/frontend-extras.css">
   <link rel="stylesheet" href="assets/css/nav-mobile.css">
   <link rel="stylesheet" href="assets/css/chatbot.css">
+  <link rel="stylesheet" href="assets/css/map.css">
+  <link rel="manifest" href="site.webmanifest">
 </head>
 <body data-page="index.html">
   <div id="dt-header"></div>
 
+  <main id="main-content">
   <section class="dt-hero" id="dtHero" data-slides="[]"></section>
 
   <section class="container dt-search-float" id="search-section">
@@ -120,7 +123,8 @@
           <span class="section-eyebrow"><i class="fa-solid fa-star"></i> Featured</span>
           <h2 class="section-title text-start mb-0">Must-see Ghana</h2>
         </div>
-        <a href="destinations.html" class="btn btn-digitour-outline btn-sm">View all destinations</a>
+          <a href="destinations.html" class="btn btn-digitour-outline btn-sm">View all destinations</a>
+          <a href="map.html" class="btn btn-digitour-gold btn-sm"><i class="fa-solid fa-globe-africa me-1"></i> Open map</a>
       </div>
       <div class="dt-featured-strip reveal" id="featured-strip"></div>
     </div>
@@ -168,13 +172,46 @@
     </div>
   </section>
 
+  </main>
   <div id="dt-footer"></div>
+
+  <!-- Netlify Forms detection stubs (required so Forms appear in Netlify dashboard) -->
+  <form name="booking" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="confirmation_code">
+    <input type="text" name="hotel">
+    <input type="text" name="destination">
+    <input type="text" name="check_in">
+    <input type="text" name="check_out">
+    <input type="text" name="guests">
+    <input type="text" name="total_usd">
+    <input type="text" name="guest_name">
+    <input type="email" name="guest_email">
+    <input name="bot-field">
+  </form>
+  <form name="review" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="destination_id">
+    <input type="text" name="destination">
+    <input type="text" name="name">
+    <input type="email" name="email">
+    <input type="text" name="rating">
+    <textarea name="comment"></textarea>
+    <input name="bot-field">
+  </form>
+  <form name="registration" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name">
+    <input type="email" name="email">
+    <input type="text" name="phone">
+    <input type="text" name="created_at">
+    <input name="bot-field">
+  </form>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/digitour-core.js"></script>
+  <script src="assets/js/storage.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/effects.js"></script>
   <script src="assets/js/pages.js"></script>
+  <script src="assets/js/seo.js"></script>
   <script src="assets/js/chatbot.js"></script>
 </body>
 </html>

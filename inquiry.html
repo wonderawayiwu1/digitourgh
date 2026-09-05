@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Send tourism inquiries to DigiTour Ghana about attractions, hotels, and travel plans.">
   <title>General Tourist Inquiries | DigiTour Ghana</title>
   <link rel="icon" href="sources/images/logo-svg/logo-outline-white.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -12,10 +13,12 @@
   <link rel="stylesheet" href="assets/css/frontend-extras.css">
   <link rel="stylesheet" href="assets/css/nav-mobile.css">
   <link rel="stylesheet" href="assets/css/chatbot.css">
+  <link rel="stylesheet" href="assets/css/map.css">
+  <link rel="manifest" href="site.webmanifest">
 </head>
 <body data-page="inquiry.html">
   <div id="dt-header"></div>
-  <section class="py-5 bg-light min-vh-100">
+  <main id="main-content" class="py-5 bg-light min-vh-100">
     <div class="container py-4">
       <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -26,8 +29,11 @@
               <p class="text-light mb-0 small">Questions about attractions, hotel stays, or travel packages? Send us a message.</p>
             </div>
             <div class="card-body p-4 p-md-5">
+              <div id="inq-storage-note" class="mb-3"></div>
               <div id="inq-alert"></div>
-              <form id="inquiry-form">
+              <form id="inquiry-form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="inquiry">
+                <p class="d-none"><label>Don’t fill this out: <input name="bot-field"></label></p>
                 <div class="row g-3 mb-3">
                   <div class="col-md-6">
                     <label class="form-label fw-bold">Your Name <span class="text-danger">*</span></label>
@@ -57,13 +63,15 @@
         </div>
       </div>
     </div>
-  </section>
+  </main>
   <div id="dt-footer"></div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/digitour-core.js"></script>
+  <script src="assets/js/storage.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/effects.js"></script>
   <script src="assets/js/pages.js"></script>
+  <script src="assets/js/seo.js"></script>
   <script src="assets/js/chatbot.js"></script>
 </body>
 </html>

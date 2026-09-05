@@ -329,6 +329,14 @@
       : `<a class="dt-drawer-link" href="login.html" data-drawer-close><i class="fa-solid fa-right-to-bracket"></i> Login</a>
          <a class="btn btn-digitour-gold w-100 mt-2" href="register.html" data-drawer-close>Create account</a>`;
 
+    const prefs = (window.DigiStorage && DigiStorage.getPrefs()) || { lang: 'en', contrast: false };
+    const prefsBar = `
+      <div class="dt-prefs-bar" role="group" aria-label="Display preferences">
+        <button type="button" data-set-lang="en" class="${prefs.lang !== 'fr' ? 'is-active' : ''}" title="English">EN</button>
+        <button type="button" data-set-lang="fr" class="${prefs.lang === 'fr' ? 'is-active' : ''}" title="Français">FR</button>
+        <button type="button" data-toggle-contrast class="${prefs.contrast ? 'is-active' : ''}" title="High contrast"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>`;
+
     const backBtn = !isHome
       ? `<button type="button" class="btn btn-nav-back btn-sm rounded-pill" onclick="if(document.referrer && document.referrer.indexOf(window.location.host) !== -1){ history.back(); } else { window.location.href='index.html'; }" title="Go Back">
            <i class="fa-solid fa-arrow-left"></i><span class="d-none d-sm-inline">Back</span>
@@ -336,6 +344,7 @@
       : '';
 
     const header = `
+
 <div class="dt-page-bg" id="dtPageBg" aria-hidden="true">${bgLayers}<div class="dt-page-bg-wash"></div></div>
 <div id="scroll-progress"></div>
 <div class="top-bar d-none d-lg-block">
@@ -350,7 +359,7 @@
       <span class="mx-2 opacity-50">|</span>
       <a href="${tel}"><i class="fa-solid fa-phone me-1"></i> Call</a>
     </div>
-    <div>${topAuth}</div>
+    <div class="d-flex align-items-center gap-3">${prefsBar}${topAuth}</div>
   </div>
 </div>
 <header class="dt-site-header sticky-top">
@@ -365,12 +374,16 @@
     <nav class="dt-nav-desktop" aria-label="Primary">
       <a class="dt-nav-link ${isHome ? 'is-active' : ''}" href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
       <a class="dt-nav-link ${active.includes('destination') ? 'is-active' : ''}" href="destinations.html"><i class="fa-solid fa-map-location-dot"></i><span>Destinations</span></a>
+      <a class="dt-nav-link ${active === 'map.html' ? 'is-active' : ''}" href="map.html"><i class="fa-solid fa-globe-africa"></i><span>Map</span></a>
       <a class="dt-nav-link ${active === 'inquiry.html' ? 'is-active' : ''}" href="inquiry.html"><i class="fa-solid fa-circle-question"></i><span>Inquiries</span></a>
       ${navAuthDesktop}
     </nav>
-    <button type="button" class="dt-menu-btn" id="dtMenuOpen" aria-label="Open menu" aria-expanded="false" aria-controls="dtMobileDrawer">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="d-flex align-items-center gap-2">
+      <div class="d-lg-none">${prefsBar}</div>
+      <button type="button" class="dt-menu-btn" id="dtMenuOpen" aria-label="Open menu" aria-expanded="false" aria-controls="dtMobileDrawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 <div class="dt-drawer-backdrop" id="dtDrawerBackdrop" hidden></div>
@@ -385,6 +398,7 @@
   <nav class="dt-drawer-nav">
     <a class="dt-drawer-link ${isHome ? 'is-active' : ''}" href="index.html" data-drawer-close><i class="fa-solid fa-house"></i> Home</a>
     <a class="dt-drawer-link ${active.includes('destination') ? 'is-active' : ''}" href="destinations.html" data-drawer-close><i class="fa-solid fa-map-location-dot"></i> Destinations</a>
+    <a class="dt-drawer-link ${active === 'map.html' ? 'is-active' : ''}" href="map.html" data-drawer-close><i class="fa-solid fa-globe-africa"></i> Map</a>
     <a class="dt-drawer-link ${active === 'inquiry.html' ? 'is-active' : ''}" href="inquiry.html" data-drawer-close><i class="fa-solid fa-circle-question"></i> Inquiries</a>
     <a class="dt-drawer-link" href="#" data-open-chat data-drawer-close><i class="fa-solid fa-comments"></i> Ask DigiGuide</a>
   </nav>
@@ -419,6 +433,7 @@
         <ul class="list-unstyled">
           <li class="mb-2"><a href="index.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Home</a></li>
           <li class="mb-2"><a href="destinations.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Destinations</a></li>
+          <li class="mb-2"><a href="map.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Tourism Map</a></li>
           <li class="mb-2"><a href="inquiry.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Inquiries</a></li>
           <li class="mb-2"><a href="login.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Login</a></li>
           <li class="mb-2"><a href="register.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Sign Up</a></li>
@@ -466,6 +481,16 @@
 
     bindShellEvents();
     bindMobileNav();
+    if (window.DigiStorage) DigiStorage.setPrefs(DigiStorage.getPrefs());
+    registerServiceWorker();
+  }
+
+  function registerServiceWorker() {
+    if (!('serviceWorker' in navigator)) return;
+    if (location.protocol !== 'http:' && location.protocol !== 'https:') return;
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
   }
 
   function bindMobileNav() {
@@ -501,6 +526,24 @@
         setUser(null);
         toast('You have been logged out.', 'info');
         setTimeout(() => { window.location.href = 'index.html'; }, 600);
+      });
+    });
+    document.querySelectorAll('[data-set-lang]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (!window.DigiStorage) return;
+        DigiStorage.setPrefs({ lang: btn.getAttribute('data-set-lang') });
+        document.querySelectorAll('[data-set-lang]').forEach((b) => {
+          b.classList.toggle('is-active', b.getAttribute('data-set-lang') === DigiStorage.getPrefs().lang);
+        });
+        toast(DigiStorage.getPrefs().lang === 'fr' ? 'Langue : Français (aperçu)' : 'Language: English', 'info');
+      });
+    });
+    document.querySelectorAll('[data-toggle-contrast]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (!window.DigiStorage) return;
+        const next = !DigiStorage.getPrefs().contrast;
+        DigiStorage.setPrefs({ contrast: next });
+        btn.classList.toggle('is-active', next);
       });
     });
   }

@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://digitourgh.netlify.app/sitemap.xml
+
+# Prefer crawl of public catalogue pages
+Allow: /index.html
+Allow: /destinations.html
+Allow: /destination-detail.html
+Allow: /map.html
+Allow: /data/
+Disallow: /netlify/
+Disallow: /.netlify/

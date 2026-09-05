@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive DigiTour Ghana map — explore 105 attractions by region and category, then open nearby hotels.">
+  <title>Interactive Ghana Tourism Map | DigiTour Ghana</title>
+  <link rel="icon" href="sources/images/logo-svg/logo-outline-white.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://digitourgh.netlify.app/map.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/frontend-extras.css">
+  <link rel="stylesheet" href="assets/css/nav-mobile.css">
+  <link rel="stylesheet" href="assets/css/chatbot.css">
+  <link rel="stylesheet" href="assets/css/map.css">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body data-page="map.html">
+  <a class="dt-skip-link" href="#map-main">Skip to map</a>
+  <div id="dt-header"></div>
+
+  <section class="detail-hero position-relative overflow-hidden dt-dest-banner">
+    <div class="dt-section-videos" aria-hidden="true">
+      <div class="dt-section-video dt-img-cycle is-active" style="background-image:url('sources/images/all_tourist_sites/Kakum%20National%20Park%20Canopy%20Walkway.jpg')"></div>
+      <div class="dt-section-video-wash" style="background: linear-gradient(135deg, rgba(35, 47, 62, 0.75), rgba(255, 153, 0, 0.4));"></div>
+    </div>
+    <div class="container text-center position-relative" style="z-index:3">
+      <span class="section-eyebrow" style="background:rgba(255,255,255,.2);color:#fff;border-color:rgba(255,255,255,.35)">Explore Ghana</span>
+      <h1 class="dt-page-hero-title text-white mb-2">Interactive tourism map</h1>
+      <p class="lead mb-0 mx-auto" style="max-width:560px;color:rgba(255,255,255,.9)">Live pins for DigiTour destinations — filter by region or category, then open details and hotels.</p>
+    </div>
+  </section>
+
+  <main id="map-main" class="section-shell pt-4">
+    <div class="container">
+      <div class="dt-map-toolbar reveal">
+        <div class="row g-2 align-items-end">
+          <div class="col-md-4">
+            <label class="form-label small fw-bold text-uppercase text-secondary mb-1" for="map-search">Search</label>
+            <input type="search" id="map-search" class="form-control" placeholder="Kakum, Castle, Mole…">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label small fw-bold text-uppercase text-secondary mb-1" for="map-region">Region</label>
+            <select id="map-region" class="form-select"><option value="all">All regions</option></select>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label small fw-bold text-uppercase text-secondary mb-1" for="map-category">Category</label>
+            <select id="map-category" class="form-select"><option value="all">All categories</option></select>
+          </div>
+          <div class="col-md-2">
+            <span class="dt-badge dt-badge-gold w-100 justify-content-center">
+              <span id="map-count">0</span> sites
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dt-map-layout mt-3">
+        <div id="dtMap" class="dt-map-canvas" role="application" aria-label="Ghana destinations map"></div>
+        <aside class="dt-map-sidebar" aria-label="Matching destinations">
+          <div class="dt-map-sidebar-head">
+            <h2 class="h6 mb-0 fw-bold">Results</h2>
+            <small class="text-secondary">Tap a card to zoom</small>
+          </div>
+          <div id="map-list" class="dt-map-list"></div>
+        </aside>
+      </div>
+      <p class="small text-secondary mt-3 mb-0">
+        <i class="fa-solid fa-circle-info me-1"></i>
+        Map pins use curated coordinates for landmark sites and region-based placement for the wider catalogue — ideal for discovery and planning.
+      </p>
+    </div>
+  </main>
+
+  <div id="dt-footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/js/digitour-core.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/effects.js"></script>
+  <script src="assets/js/pages.js"></script>
+  <script src="assets/js/map.js"></script>
+  <script src="assets/js/seo.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+/* Map hub + accessibility extras */
+
+.dt-skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: #232F3E;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  z-index: 100000;
+  border-radius: 0 0 8px 0;
+  font-weight: 700;
+}
+.dt-skip-link:focus {
+  left: 0;
+}
+
+html.dt-contrast,
+html.dt-contrast body {
+  filter: contrast(1.12);
+}
+html.dt-contrast .dt-site-header {
+  background: #fff !important;
+  border-bottom-width: 4px;
+}
+html.dt-contrast .dt-chat-bubble,
+html.dt-contrast .bento-cap,
+html.dt-contrast .section-title {
+  letter-spacing: 0.01em;
+}
+
+.dt-map-toolbar {
+  background: #fff;
+  border: 1px solid rgba(35, 47, 62, 0.08);
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(35, 47, 62, 0.06);
+}
+
+.dt-map-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr;
+  gap: 1rem;
+  min-height: 560px;
+}
+
+.dt-map-canvas {
+  height: min(70vh, 640px);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(35, 47, 62, 0.1);
+  box-shadow: 0 10px 30px rgba(35, 47, 62, 0.08);
+  z-index: 1;
+}
+
+.dt-map-sidebar {
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid rgba(35, 47, 62, 0.08);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.dt-map-sidebar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(35, 47, 62, 0.08);
+}
+
+.dt-map-list {
+  overflow-y: auto;
+  max-height: min(70vh, 640px);
+  padding: 0.5rem;
+}
+
+.dt-map-list-item {
+  width: 100%;
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  border-radius: 12px;
+  padding: 0.55rem;
+  cursor: pointer;
+}
+.dt-map-list-item:hover {
+  background: rgba(255, 153, 0, 0.1);
+}
+.dt-map-list-item img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex: 0 0 auto;
+}
+.dt-map-list-item span {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.dt-map-list-item strong {
+  font-size: 0.86rem;
+  color: #232F3E;
+  line-height: 1.25;
+}
+.dt-map-list-item small {
+  color: #64748B;
+  font-size: 0.75rem;
+}
+
+.dt-map-pin {
+  background: transparent !important;
+  border: 0 !important;
+}
+.dt-map-pin span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+}
+.dt-map-pin span i {
+  transform: rotate(45deg);
+  font-size: 0.85rem;
+}
+
+.dt-map-popup {
+  min-width: 180px;
+  max-width: 220px;
+}
+.dt-map-popup img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.4rem;
+}
+.dt-map-popup strong {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.15rem;
+}
+.dt-map-popup small {
+  color: #64748B;
+}
+.dt-map-popup-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.45rem;
+}
+.dt-map-popup-actions a {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #C45500;
+}
+
+.dt-share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+.dt-share-bar .btn {
+  border-radius: 999px;
+}
+
+.dt-related-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.85rem;
+}
+.dt-related-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(35, 47, 62, 0.08);
+  box-shadow: 0 6px 18px rgba(35, 47, 62, 0.06);
+  transition: transform 0.2s ease;
+}
+.dt-related-card:hover { transform: translateY(-3px); color: inherit; }
+.dt-related-card img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+}
+.dt-related-card div {
+  padding: 0.7rem 0.8rem 0.9rem;
+}
+.dt-related-card strong {
+  display: block;
+  font-size: 0.88rem;
+  margin-bottom: 0.15rem;
+}
+.dt-related-card small { color: #64748B; }
+
+.dt-confirm-ticket {
+  background: #fff;
+  border: 1px dashed rgba(228, 121, 17, 0.55);
+  border-radius: 18px;
+  padding: 1.25rem;
+}
+.dt-confirm-ticket img {
+  width: 140px;
+  height: 140px;
+  background: #fff;
+}
+
+.dt-prefs-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.dt-prefs-bar button {
+  border: 1px solid rgba(35, 47, 62, 0.12);
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #37475A;
+  cursor: pointer;
+}
+.dt-prefs-bar button.is-active {
+  background: rgba(255, 153, 0, 0.15);
+  border-color: rgba(228, 121, 17, 0.45);
+  color: #232F3E;
+}
+
+.dt-storage-note {
+  border-radius: 14px !important;
+  background: #FFFBF5 !important;
+}
+
+@media (max-width: 991.98px) {
+  .dt-map-layout {
+    grid-template-columns: 1fr;
+  }
+  .dt-map-canvas {
+    height: 52vh;
+  }
+  .dt-map-list {
+    max-height: 280px;
+  }
+}

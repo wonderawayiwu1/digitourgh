@@ -1,59 +1,53 @@
 # DigiTour Frontend (Static + DigiGuide AI)
 
-Static DigiTour Ghana site for free Netlify hosting, plus a serverless **DigiGuide** chatbot (Groq).
+National DigiTour Ghana portal for free **Netlify** hosting — no PHP and no SQL database.
 
-## Features
+## Architecture (how data works without a backend)
 
-- 105 destinations · 97 hotels · reviews · demo auth/bookings (`localStorage`)
-- Smooth landing page (hero video only — no full-page video backdrops)
-- Mobile-friendly header with slide-over drawer (no Bootstrap hamburger collapse)
-- **DigiGuide** chat: DigiTour catalogue context + DuckDuckGo/Wikipedia web fallback
+| Data | Where it lives | Why |
+|------|----------------|-----|
+| Destinations / hotels / seed reviews | `data/*.json` (static files) | Instant, free, versioned with the site |
+| Accounts (register/login) | Browser `localStorage` (`dt_users`, `dt_user`) | Works offline on each device; no server DB needed |
+| Bookings & user reviews | Browser `localStorage` + **Netlify Forms** | User sees them immediately; admin sees copies in Netlify → Forms |
+| Inquiries | Netlify Forms (`inquiry`) + local copy | Real admin inbox on Netlify |
+| DigiGuide answers | Netlify Function + Groq API | API key stays server-side |
 
-## Demo login
+**Important:** Clearing browser data removes that device’s local account/bookings. On production Netlify, Forms still retain inquiry/booking/review submissions for staff.
 
-| Email | Password |
-|-------|----------|
-| kwame@example.com | demo123 |
-| adwoa@example.com | demo123 |
+Demo logins still work: `kwame@example.com` / `demo123`.
 
-## DigiGuide setup (required for chat)
+## What’s included
 
-1. Create a free key at [console.groq.com](https://console.groq.com)
-2. Keep it in `.env` locally (already gitignored):
+- 105 destinations · 97 hotels · interactive **Map** (`map.html`)
+- DigiGuide chatbot (catalogue + web fallback)
+- SEO: `robots.txt`, `sitemap.xml`, Open Graph, JSON-LD, canonical URLs
+- PWA shell (`site.webmanifest` + `sw.js`) for basic offline access
+- Share buttons, related destinations, booking QR ticket
+- EN/FR language toggle + high-contrast mode
+- Mobile drawer navigation
 
-```env
-GROQ_API_KEY=gsk_...
-```
+## DigiGuide (chat)
 
-3. On Netlify: **Site settings → Environment variables → Add `GROQ_API_KEY`**
-4. Local chat testing (functions need Netlify CLI):
+1. Set `GROQ_API_KEY` in Netlify → Environment variables  
+2. Or keep it in local `.env` (gitignored)  
+3. Local chat: `node server.js` or `netlify dev`
 
-```bash
-npm i -g netlify-cli
-netlify login
-netlify dev
-```
+## Deploy
 
-Open the URL Netlify prints (usually `http://localhost:8888`). Live Server (`:5500`) serves HTML only — the chat API will not run there.
+1. Push / drag the full folder to Netlify (include `sources/`, `data/`, `netlify/functions/`)  
+2. Set `GROQ_API_KEY`  
+3. After first deploy, open **Forms** and confirm `inquiry`, `booking`, `review`, `registration` appear  
+4. Submit Search Console with `https://digitourgh.netlify.app/sitemap.xml`
 
-## Local static preview (no chat)
+## Local preview
 
 ```bash
 python -m http.server 8765
+# or
+node server.js
 ```
 
-## Deploy to Netlify
-
-Drag the folder to [Netlify Drop](https://app.netlify.com/drop) **or** connect the Git repo.
-
-**Must include:** `sources/`, `data/`, `netlify/functions/`, and set `GROQ_API_KEY` in Netlify env.
-
-## Security
-
-- Never commit `.env`
-- If a Groq key was pasted in chat or committed, **rotate it** in the Groq console
-
-## Re-export data
+## Re-export catalogue from SQL
 
 ```bash
 python _export_sql.py

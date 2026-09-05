@@ -1,0 +1,18 @@
+{
+  "name": "DigiTour Ghana",
+  "short_name": "DigiTour",
+  "description": "Discover Ghanaian attractions and book nearby hotels — DigiTour national tourism portal.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#FFFBF5",
+  "theme_color": "#E47911",
+  "lang": "en-GH",
+  "icons": [
+    {
+      "src": "sources/images/logo-svg/logo-colored.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
