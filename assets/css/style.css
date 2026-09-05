@@ -1072,17 +1072,32 @@ a {
     min-height: auto;
   }
 
+  /* .dt-hero-content IS the Bootstrap .container — padding-inline controls side gaps */
   .dt-hero-content {
-    padding: 5.5rem 1.25rem 0.5rem;
+    padding: 5.5rem 1.5rem 0.5rem !important;
   }
 
   .dt-hero-brand {
     font-size: 2.4rem;
   }
 
+  .dt-hero-kicker {
+    max-width: calc(100% - 1rem);
+  }
+
+  .dt-hero-slide-copy {
+    max-width: 100%;
+  }
+
+  .dt-hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .dt-hero-actions .btn {
-    width: calc(100% - 2.5rem);
-    max-width: 340px;
+    width: auto;
+    min-width: 200px;
+    max-width: calc(100% - 3rem);
   }
 
   .dt-search-float {
@@ -2568,7 +2583,7 @@ a {
   }
 
   .dt-hero-slide-copy {
-    padding-right: 1rem;
+    padding-right: 0.5rem;
   }
 
   .dt-hero-slide-copy h2 {
