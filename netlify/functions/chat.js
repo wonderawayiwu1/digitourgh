@@ -1,9 +1,23 @@
-/**
- * DigiTour DigiGuide — Netlify Function
- * Context injection from DigiTour JSON + DuckDuckGo / Wikipedia web fallback + Groq LLM
- */
+const fs = require('fs');
+const path = require('path');
+
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const MODEL = 'llama-3.3-70b-versatile';
+
+function getApiKey() {
+  if (process.env.GROQ_API_KEY) return process.env.GROQ_API_KEY;
+  try {
+    const envPath = path.resolve(__dirname, '../../.env');
+    if (fs.existsSync(envPath)) {
+      const content = fs.readFileSync(envPath, 'utf8');
+      const match = content.match(/^GROQ_API_KEY\s*=\s*["']?([^"'\r\n]+)["']?/m);
+      if (match && match[1]) {
+        return match[1].trim();
+      }
+    }
+  } catch (_) {}
+  return null;
+}
 
 function corsHeaders() {
   return {
@@ -26,8 +40,9 @@ function stripHtml(html) {
 }
 
 function siteBase(event) {
-  const proto = event.headers['x-forwarded-proto'] || 'https';
-  const host = event.headers['x-forwarded-host'] || event.headers.host;
+  const headers = (event && event.headers) || {};
+  const proto = headers['x-forwarded-proto'] || 'https';
+  const host = headers['x-forwarded-host'] || headers.host;
   if (host) return `${proto}://${host}`;
   return process.env.URL || process.env.DEPLOY_PRIME_URL || 'http://localhost:8888';
 }
@@ -308,7 +323,7 @@ exports.handler = async (event) => {
     return { statusCode: 405, headers: corsHeaders(), body: JSON.stringify({ error: 'POST only' }) };
   }
 
-  const apiKey = process.env.GROQ_API_KEY;
+  const apiKey = getApiKey();
   if (!apiKey) {
     return {
       statusCode: 500,
