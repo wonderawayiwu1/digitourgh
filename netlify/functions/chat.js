@@ -1,22 +1,26 @@
-const fs = require('fs');
-const path = require('path');
-
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
+/** Current Groq free-tier chat model (llama-3.3 is retired on many keys) */
 const MODEL = 'openai/gpt-oss-120b';
 
+/**
+ * Read GROQ_API_KEY safely.
+ * - Trim whitespace / quotes (common Netlify paste issue → "Invalid API Key")
+ * - Use bracket access so esbuild does not bake an empty value at build time
+ */
 function getApiKey() {
-  if (process.env.GROQ_API_KEY) return process.env.GROQ_API_KEY;
-  try {
-    const envPath = path.resolve(__dirname, '../../.env');
-    if (fs.existsSync(envPath)) {
-      const content = fs.readFileSync(envPath, 'utf8');
-      const match = content.match(/^GROQ_API_KEY\s*=\s*["']?([^"'\r\n]+)["']?/m);
-      if (match && match[1]) {
-        return match[1].trim();
-      }
-    }
-  } catch (_) {}
-  return null;
+  const raw = process.env['GROQ_API_KEY'] || process.env['GROQ_KEY'] || '';
+  let key = String(raw).trim();
+  // Strip wrapping quotes and accidental "GROQ_API_KEY=" prefix
+  if ((key.startsWith('"') && key.endsWith('"')) || (key.startsWith("'") && key.endsWith("'"))) {
+    key = key.slice(1, -1).trim();
+  }
+  if (key.toUpperCase().startsWith('GROQ_API_KEY=')) {
+    key = key.slice('GROQ_API_KEY='.length).trim();
+  }
+  // Drop BOM / zero-width chars
+  key = key.replace(/^\uFEFF/, '').replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+  if (key && key.startsWith('gsk_')) return key;
+  return key || null;
 }
 
 function corsHeaders() {
@@ -306,12 +310,21 @@ async function callGroq(apiKey, system, messages) {
     }),
   });
 
-  const data = await res.json();
+  const data = await res.json().catch(() => ({}));
   if (!res.ok) {
     const msg = (data && data.error && data.error.message) || 'Groq API error';
+    // Helpful hint when key is malformed after paste
+    if (/invalid api key/i.test(msg)) {
+      throw new Error(
+        'Invalid API Key — in Netlify, edit GROQ_API_KEY, paste only the gsk_… value (no spaces/quotes), save, then trigger “Clear cache and deploy site”.'
+      );
+    }
     throw new Error(msg);
   }
-  return (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '';
+  const choice = data.choices && data.choices[0] && data.choices[0].message;
+  const content = (choice && choice.content) || '';
+  // Some Groq models put draft text in reasoning; prefer content
+  return String(content).trim() || '';
 }
 
 exports.handler = async (event) => {
