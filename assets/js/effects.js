@@ -30,7 +30,7 @@
   }
 
   function initNavbar() {
-    const nav = $('.navbar-digitour');
+    const nav = $('.dt-site-header') || $('.navbar-digitour');
     if (!nav) return;
     const onScroll = throttleRAF(() => nav.classList.toggle('is-scrolled', window.scrollY > 24));
     window.addEventListener('scroll', onScroll, { passive: true });

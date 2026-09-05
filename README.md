@@ -1,14 +1,13 @@
-# DigiTour Frontend (Static)
+# DigiTour Frontend (Static + DigiGuide AI)
 
-Static rebuild of the DigiTour Ghana PHP/MySQL portal for free Netlify hosting.
-All catalogue data lives in `data/*.json`. Auth, bookings, and inquiries use `localStorage` (demo mode).
+Static DigiTour Ghana site for free Netlify hosting, plus a serverless **DigiGuide** chatbot (Groq).
 
-## What's included
+## Features
 
-- **105 destinations** and **97 hotels** exported from `digitour_db.sql`
-- Real media under `sources/` (destination photos, hotel photos, hero videos, logos)
-- Amazon-gold UI, bento grids, Trip Planner, currency switcher, Call/WhatsApp floats
-- Smooth landing page (hero video only — no full-page video backdrops while scrolling)
+- 105 destinations · 97 hotels · reviews · demo auth/bookings (`localStorage`)
+- Smooth landing page (hero video only — no full-page video backdrops)
+- Mobile-friendly header with slide-over drawer (no Bootstrap hamburger collapse)
+- **DigiGuide** chat: DigiTour catalogue context + DuckDuckGo/Wikipedia web fallback
 
 ## Demo login
 
@@ -17,30 +16,45 @@ All catalogue data lives in `data/*.json`. Auth, bookings, and inquiries use `lo
 | kwame@example.com | demo123 |
 | adwoa@example.com | demo123 |
 
-## Local preview
+## DigiGuide setup (required for chat)
 
-Serve over HTTP (required for `fetch` of JSON):
+1. Create a free key at [console.groq.com](https://console.groq.com)
+2. Keep it in `.env` locally (already gitignored):
+
+```env
+GROQ_API_KEY=gsk_...
+```
+
+3. On Netlify: **Site settings → Environment variables → Add `GROQ_API_KEY`**
+4. Local chat testing (functions need Netlify CLI):
 
 ```bash
-cd DigiTour_Frontend
+npm i -g netlify-cli
+netlify login
+netlify dev
+```
+
+Open the URL Netlify prints (usually `http://localhost:8888`). Live Server (`:5500`) serves HTML only — the chat API will not run there.
+
+## Local static preview (no chat)
+
+```bash
 python -m http.server 8765
 ```
 
-Open `http://localhost:8765`
-
-Or use Live Server / VS Code — avoid opening `index.html` as a `file://` URL.
-
 ## Deploy to Netlify
 
-1. Drag the entire `DigiTour_Frontend` folder (including `sources/` and `data/`) onto [Netlify Drop](https://app.netlify.com/drop), **or**
-2. Connect the repo and leave `netlify.toml` as-is (`publish = "."`).
+Drag the folder to [Netlify Drop](https://app.netlify.com/drop) **or** connect the Git repo.
 
-**Important:** Keep `sources/` inside the publish folder so images and hero videos load.
+**Must include:** `sources/`, `data/`, `netlify/functions/`, and set `GROQ_API_KEY` in Netlify env.
 
-## Re-export data after SQL or media changes
+## Security
+
+- Never commit `.env`
+- If a Groq key was pasted in chat or committed, **rotate it** in the Groq console
+
+## Re-export data
 
 ```bash
 python _export_sql.py
 ```
-
-This rematches every destination/hotel title to files in `sources/` the same way the PHP backend did.

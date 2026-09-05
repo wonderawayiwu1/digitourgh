@@ -317,11 +317,17 @@
       : `<a href="login.html" class="me-3"><i class="fa-solid fa-right-to-bracket me-1"></i> Login</a>
          <a href="register.html" class="btn btn-sm btn-digitour-gold py-1 px-3"><i class="fa-solid fa-user-plus me-1"></i> Sign Up</a>`;
 
-    const navAuth = user
-      ? `<li class="nav-item ms-lg-1"><a class="btn btn-digitour-primary btn-sm px-3" href="dashboard.html"><i class="fa-solid fa-gauge me-1"></i> Dashboard</a></li>
-         <li class="nav-item d-lg-none"><a class="nav-link text-danger" href="#" data-logout><i class="fa-solid fa-right-from-bracket me-1"></i> Logout</a></li>`
-      : `<li class="nav-item ms-lg-1"><a class="btn btn-digitour-outline btn-sm px-3" href="login.html"><i class="fa-solid fa-right-to-bracket me-1"></i> Login</a></li>
-         <li class="nav-item ms-lg-1"><a class="btn btn-digitour-gold btn-sm px-3" href="register.html"><i class="fa-solid fa-user-plus me-1"></i> Register</a></li>`;
+    const navAuthDesktop = user
+      ? `<a class="dt-nav-link ${active === 'dashboard.html' ? 'is-active' : ''}" href="dashboard.html"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></a>
+         <a class="dt-nav-link dt-nav-logout" href="#" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>`
+      : `<a class="dt-nav-link ${active === 'login.html' ? 'is-active' : ''}" href="login.html"><i class="fa-solid fa-right-to-bracket"></i><span>Login</span></a>
+         <a class="btn btn-digitour-gold btn-sm dt-nav-cta" href="register.html">Register</a>`;
+
+    const navAuthMobile = user
+      ? `<a class="dt-drawer-link" href="dashboard.html" data-drawer-close><i class="fa-solid fa-gauge"></i> Dashboard</a>
+         <a class="dt-drawer-link text-danger" href="#" data-logout data-drawer-close><i class="fa-solid fa-right-from-bracket"></i> Logout</a>`
+      : `<a class="dt-drawer-link" href="login.html" data-drawer-close><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+         <a class="btn btn-digitour-gold w-100 mt-2" href="register.html" data-drawer-close>Create account</a>`;
 
     const backBtn = !isHome
       ? `<button type="button" class="btn btn-nav-back btn-sm rounded-pill" onclick="if(document.referrer && document.referrer.indexOf(window.location.host) !== -1){ history.back(); } else { window.location.href='index.html'; }" title="Go Back">
@@ -332,7 +338,7 @@
     const header = `
 <div class="dt-page-bg" id="dtPageBg" aria-hidden="true">${bgLayers}<div class="dt-page-bg-wash"></div></div>
 <div id="scroll-progress"></div>
-<div class="top-bar d-none d-md-block">
+<div class="top-bar d-none d-lg-block">
   <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
     <div>
       <i class="fa-solid fa-location-dot me-2" style="color:#FEBD69"></i>
@@ -347,35 +353,49 @@
     <div>${topAuth}</div>
   </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-digitour sticky-top">
-  <div class="container">
-    <div class="d-flex align-items-center gap-2 min-w-0">
+<header class="dt-site-header sticky-top">
+  <div class="container dt-header-bar">
+    <div class="dt-header-left">
       ${backBtn}
-      <a class="navbar-brand text-truncate" href="index.html">
+      <a class="navbar-brand dt-brand" href="index.html">
         <i class="fa-solid fa-compass" style="color:var(--amazon-orange)"></i>
         Digi<span>Tour</span>
       </a>
     </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDigiTour" aria-controls="navbarDigiTour" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <nav class="dt-nav-desktop" aria-label="Primary">
+      <a class="dt-nav-link ${isHome ? 'is-active' : ''}" href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a class="dt-nav-link ${active.includes('destination') ? 'is-active' : ''}" href="destinations.html"><i class="fa-solid fa-map-location-dot"></i><span>Destinations</span></a>
+      <a class="dt-nav-link ${active === 'inquiry.html' ? 'is-active' : ''}" href="inquiry.html"><i class="fa-solid fa-circle-question"></i><span>Inquiries</span></a>
+      ${navAuthDesktop}
+    </nav>
+    <button type="button" class="dt-menu-btn" id="dtMenuOpen" aria-label="Open menu" aria-expanded="false" aria-controls="dtMobileDrawer">
+      <span></span><span></span><span></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarDigiTour">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1">
-        <li class="nav-item"><a class="nav-link ${isHome ? 'active' : ''}" href="index.html"><i class="fa-solid fa-house me-1"></i> Home</a></li>
-        <li class="nav-item"><a class="nav-link ${active.includes('destination') ? 'active' : ''}" href="destinations.html"><i class="fa-solid fa-map-location-dot me-1"></i> Destinations</a></li>
-        <li class="nav-item"><a class="nav-link ${active === 'inquiry.html' ? 'active' : ''}" href="inquiry.html"><i class="fa-solid fa-circle-question me-1"></i> Inquiries</a></li>
-        <li class="nav-item">
-          <button type="button" class="btn btn-nav-planner btn-sm rounded-pill my-1 my-lg-0" data-bs-toggle="modal" data-bs-target="#itineraryPlannerModal">
-            <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Trip Planner
-          </button>
-        </li>
-        <li class="nav-item">${currencySwitcherHTML()}</li>
-        ${navAuth}
-      </ul>
+  </div>
+</header>
+<div class="dt-drawer-backdrop" id="dtDrawerBackdrop" hidden></div>
+<aside class="dt-mobile-drawer" id="dtMobileDrawer" aria-hidden="true" role="dialog" aria-label="Site menu">
+  <div class="dt-drawer-head">
+    <a class="navbar-brand dt-brand" href="index.html" data-drawer-close>
+      <i class="fa-solid fa-compass" style="color:var(--amazon-orange)"></i>
+      Digi<span>Tour</span>
+    </a>
+    <button type="button" class="dt-drawer-close" id="dtMenuClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="dt-drawer-nav">
+    <a class="dt-drawer-link ${isHome ? 'is-active' : ''}" href="index.html" data-drawer-close><i class="fa-solid fa-house"></i> Home</a>
+    <a class="dt-drawer-link ${active.includes('destination') ? 'is-active' : ''}" href="destinations.html" data-drawer-close><i class="fa-solid fa-map-location-dot"></i> Destinations</a>
+    <a class="dt-drawer-link ${active === 'inquiry.html' ? 'is-active' : ''}" href="inquiry.html" data-drawer-close><i class="fa-solid fa-circle-question"></i> Inquiries</a>
+    <a class="dt-drawer-link" href="#" data-open-chat data-drawer-close><i class="fa-solid fa-comments"></i> Ask DigiGuide</a>
+  </nav>
+  <div class="dt-drawer-actions">
+    ${navAuthMobile}
+    <div class="dt-drawer-contact">
+      <a href="${tel}"><i class="fa-solid fa-phone"></i> ${esc(phone)}</a>
+      <a href="${wa}" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
   </div>
-</nav>
-${itineraryModalHTML()}`;
+</aside>`;
 
     const year = new Date().getFullYear();
     const footer = `
@@ -425,7 +445,7 @@ ${itineraryModalHTML()}`;
     <hr class="my-4" style="border-color:rgba(255,255,255,0.12)">
     <div class="row align-items-center">
       <div class="col-md-7 text-center text-md-start">
-        <p class="mb-0 small">&copy; ${year} DigiTour Ghana. Smart Tourism &amp; Accommodation Platform. <span class="opacity-75">Static demo for Netlify.</span></p>
+        <p class="mb-0 small">&copy; ${year} DigiTour Ghana. Smart Tourism &amp; Accommodation Platform.</p>
       </div>
       <div class="col-md-5 text-center text-md-end mt-2 mt-md-0">
         <a href="login.html" class="small" style="color:#94A3B8"><i class="fa-solid fa-lock me-1"></i> Demo Login</a>
@@ -444,17 +464,37 @@ ${itineraryModalHTML()}`;
     if (headerMount) headerMount.innerHTML = header;
     if (footerMount) footerMount.innerHTML = footer;
 
-    updateCurrencyUI();
     bindShellEvents();
+    bindMobileNav();
+  }
+
+  function bindMobileNav() {
+    const openBtn = document.getElementById('dtMenuOpen');
+    const closeBtn = document.getElementById('dtMenuClose');
+    const drawer = document.getElementById('dtMobileDrawer');
+    const backdrop = document.getElementById('dtDrawerBackdrop');
+    if (!openBtn || !drawer || !backdrop) return;
+
+    const setOpen = (open) => {
+      document.body.classList.toggle('dt-drawer-open', open);
+      drawer.classList.toggle('is-open', open);
+      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+      openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      backdrop.hidden = !open;
+    };
+
+    openBtn.addEventListener('click', () => setOpen(true));
+    closeBtn && closeBtn.addEventListener('click', () => setOpen(false));
+    backdrop.addEventListener('click', () => setOpen(false));
+    drawer.querySelectorAll('[data-drawer-close]').forEach((el) => {
+      el.addEventListener('click', () => setOpen(false));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
   }
 
   function bindShellEvents() {
-    document.querySelectorAll('[data-set-curr]').forEach((a) => {
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        setCurrency(a.getAttribute('data-set-curr'));
-      });
-    });
     document.querySelectorAll('[data-logout]').forEach((a) => {
       a.addEventListener('click', (e) => {
         e.preventDefault();
@@ -463,56 +503,6 @@ ${itineraryModalHTML()}`;
         setTimeout(() => { window.location.href = 'index.html'; }, 600);
       });
     });
-    const form = document.getElementById('itineraryForm');
-    if (form) {
-      form.addEventListener('submit', generateItinerary);
-    }
-  }
-
-  function generateItinerary(e) {
-    e.preventDefault();
-    const duration = document.getElementById('tripDuration').value;
-    const interest = document.getElementById('tripInterest').value;
-    const results = document.getElementById('itineraryResults');
-    const container = document.getElementById('itineraryDays');
-    const badge = document.getElementById('planBadge');
-    badge.innerText = duration + '-Day ' + interest.toUpperCase() + ' Tour';
-    container.innerHTML = '';
-    const plans = {
-      history: [
-        { day: 'Day 1: Greater Accra Heritage', site: 'Kwame Nkrumah Memorial Park & Independence Square', activity: 'Tour original mausoleum, explore National Museum.', hotel: 'Labadi Beach Hotel / Accra City Hotel' },
-        { day: 'Day 2: Central Region Castles', site: 'Cape Coast Castle & Elmina Castle', activity: 'Walk through UNESCO dungeon heritage & Door of No Return.', hotel: 'Ridge Royal Hotel Cape Coast' },
-        { day: 'Day 3: Forest Canopy Walk', site: 'Kakum National Park Canopy Walkway', activity: '350-meter canopy walk 40m high in rainforest canopy.', hotel: 'Coconut Grove Beach Resort' },
-      ],
-      nature: [
-        { day: 'Day 1: Rainforest Adventure', site: 'Kakum National Park & Praso River', activity: 'Hike early morning birdwatching trails & canopy ropes.', hotel: 'Hans Cottage Botel' },
-        { day: 'Day 2: Elephant Safari', site: 'Mole National Park (Savannah Region)', activity: 'Guided walking safari with wild elephants & baboons.', hotel: 'Zaina Lodge Mole' },
-        { day: 'Day 3: Ancient Mud Architecture', site: 'Larabanga Mosque & Mystic Stone', activity: 'Photograph 15th century Sudanese architecture.', hotel: 'Mole Motel' },
-      ],
-      beach: [
-        { day: 'Day 1: Accra Atlantic Coastline', site: 'Labadi Beach & Osu Nightlife', activity: 'Sunset coconut drinks, horseback riding, local live music.', hotel: 'Royal Senchi Resort' },
-        { day: 'Day 2: Central Coast Sands', site: 'Elmina Beach Resort & Brenu Akyinim', activity: 'Sailing, beach volleyball, fresh grilled seafood.', hotel: 'Coconut Grove Beach Resort' },
-        { day: 'Day 3: Western Palm Lagoons', site: 'Busua Beach & Nzulezo Stilt Village', activity: 'Surfing, canoe excursion across Lake Tadane.', hotel: 'Busua Beach Resort' },
-      ],
-      culture: [
-        { day: 'Day 1: Ashanti Kingdom Heart', site: 'Manhyia Palace Museum & Kejetia Market', activity: 'Examine royal Ashanti regalia and vibrant textile markets.', hotel: 'Golden Tulip Kumasi' },
-        { day: 'Day 2: Kente & Woodcraft Villages', site: 'Bonwire Kente Weaving Village', activity: 'Try hand-weaving genuine traditional Kente cloth.', hotel: 'Noda Hotel Kumasi' },
-        { day: 'Day 3: Sacred Lake Bosomtwe', site: 'Lake Bosomtwe Crater', activity: "Horseback riding along West Africa's ancient meteorite lake.", hotel: 'Paradise Resort Bosomtwe' },
-      ],
-    };
-    const selectedList = plans[interest] || plans.history;
-    const count = Math.min(parseInt(duration, 10), selectedList.length);
-    for (let i = 0; i < count; i++) {
-      const item = selectedList[i];
-      container.innerHTML += `
-        <div class="p-3 bg-light rounded-3 border-start border-4 border-success">
-          <div class="fw-bold text-success mb-1"><i class="fa-solid fa-calendar-day me-1"></i> ${esc(item.day)}</div>
-          <div class="fw-bold text-dark fs-6 mb-1">${esc(item.site)}</div>
-          <p class="text-muted small mb-2">${esc(item.activity)}</p>
-          <div class="badge bg-warning text-dark"><i class="fa-solid fa-hotel me-1"></i> Suggested Stay: ${esc(item.hotel)}</div>
-        </div>`;
-    }
-    results.classList.remove('d-none');
   }
 
   function bindSearchFilters() {
