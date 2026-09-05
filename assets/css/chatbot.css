@@ -1,4 +1,4 @@
-/* DigiGuide chatbot */
+/* DigiGuide chatbot + markdown content */
 
 .dt-chat-fab {
   position: fixed;
@@ -25,21 +25,16 @@
   box-shadow: 0 14px 32px rgba(228, 121, 17, 0.35);
 }
 
-.dt-chat-fab i {
-  font-size: 1.1rem;
-}
-
-.dt-chat-fab-label {
-  letter-spacing: 0.01em;
-}
+.dt-chat-fab i { font-size: 1.1rem; }
+.dt-chat-fab-label { letter-spacing: 0.01em; }
 
 .dt-chat-panel {
   position: fixed;
   right: 1rem;
   bottom: 5.2rem;
   z-index: 9994;
-  width: min(100% - 1.5rem, 380px);
-  height: min(72vh, 560px);
+  width: min(100% - 1.5rem, 400px);
+  height: min(78vh, 620px);
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -109,36 +104,40 @@
 .dt-chat-msgs {
   flex: 1;
   overflow-y: auto;
-  padding: 1rem;
-  background:
-    linear-gradient(180deg, rgba(255, 251, 245, 0.95), rgba(255, 255, 255, 0.98));
+  padding: 0.9rem;
+  background: linear-gradient(180deg, rgba(255, 251, 245, 0.95), rgba(255, 255, 255, 0.98));
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 .dt-chat-row {
   display: flex;
   flex-direction: column;
-  max-width: 92%;
+  max-width: 100%;
 }
 
 .dt-chat-user {
   align-self: flex-end;
   align-items: flex-end;
+  max-width: 88%;
 }
 
 .dt-chat-assistant {
-  align-self: flex-start;
-  align-items: flex-start;
+  align-self: stretch;
+  align-items: stretch;
+  max-width: 100%;
 }
 
 .dt-chat-bubble {
-  padding: 0.75rem 0.9rem;
+  padding: 0.85rem 0.95rem;
   border-radius: 16px;
-  font-size: 0.92rem;
-  line-height: 1.45;
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: #232F3E;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .dt-chat-user .dt-chat-bubble {
@@ -147,31 +146,24 @@
   border-bottom-right-radius: 6px;
 }
 
+.dt-chat-user .dt-md-p { margin: 0; color: #fff; }
+
 .dt-chat-assistant .dt-chat-bubble {
   background: #fff;
   border: 1px solid rgba(35, 47, 62, 0.08);
   box-shadow: 0 4px 14px rgba(35, 47, 62, 0.05);
   border-bottom-left-radius: 6px;
-}
-
-.dt-chat-bubble a {
-  color: #C45500;
-  font-weight: 700;
-  word-break: break-all;
-}
-
-.dt-chat-bubble code {
-  font-size: 0.82em;
-  background: rgba(35, 47, 62, 0.06);
-  padding: 0.1em 0.35em;
-  border-radius: 4px;
+  padding: 0.95rem 0.85rem;
 }
 
 .dt-chat-meta {
   font-size: 0.7rem;
   color: #6B7280;
-  margin-top: 0.25rem;
-  padding: 0 0.25rem;
+  margin-top: 0.3rem;
+  padding: 0 0.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .dt-chat-typing {
@@ -217,9 +209,7 @@
   text-align: left;
 }
 
-.dt-chat-chip:hover {
-  background: rgba(255, 153, 0, 0.18);
-}
+.dt-chat-chip:hover { background: rgba(255, 153, 0, 0.18); }
 
 .dt-chat-form {
   display: flex;
@@ -263,20 +253,258 @@ body.dt-chat-open .dt-chat-fab {
   pointer-events: none;
 }
 
+/* ===== Markdown content ===== */
+.dt-md {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.dt-md-p {
+  margin: 0;
+  color: #37475A;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.dt-md-h {
+  margin: 0.15rem 0 0;
+  color: #232F3E;
+  font-family: var(--font-display), Syne, sans-serif;
+  font-weight: 800;
+  font-size: 0.98rem;
+  line-height: 1.3;
+}
+
+.dt-md h3.dt-md-h { font-size: 1.02rem; }
+.dt-md h4.dt-md-h { font-size: 0.95rem; }
+.dt-md h5.dt-md-h { font-size: 0.9rem; color: #37475A; }
+
+.dt-md strong { color: #232F3E; font-weight: 800; }
+.dt-md em { font-style: italic; color: #37475A; }
+.dt-md u { text-decoration: underline; text-underline-offset: 2px; }
+.dt-md del { opacity: 0.7; }
+
+.dt-md-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: #37475A;
+  font-size: 0.86rem;
+}
+
+.dt-md-list li::marker { color: #E47911; }
+
+.dt-md-quote {
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+  border-left: 3px solid #E47911;
+  background: rgba(255, 153, 0, 0.08);
+  border-radius: 0 10px 10px 0;
+  color: #37475A;
+  font-size: 0.86rem;
+}
+
+.dt-md-hr {
+  border: 0;
+  border-top: 1px solid rgba(35, 47, 62, 0.1);
+  margin: 0.35rem 0;
+}
+
+.dt-md code {
+  font-size: 0.8em;
+  background: rgba(35, 47, 62, 0.06);
+  padding: 0.12em 0.4em;
+  border-radius: 5px;
+  color: #232F3E;
+}
+
+.dt-md-ico {
+  color: #E47911;
+  margin-right: 0.25rem;
+  width: 1em;
+  text-align: center;
+}
+
+.dt-md-ico.dt-md-wa,
+.dt-md-wa { color: #25D366; }
+.dt-md-ico.dt-md-gold { color: #E47911; }
+.dt-md-ico.dt-md-ok { color: #059669; }
+
+.dt-md-link {
+  color: #C45500;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.dt-md-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.2rem 0.25rem 0.2rem 0;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 750;
+  text-decoration: none !important;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.dt-md-btn-book {
+  background: linear-gradient(135deg, #FF9900, #E47911);
+  color: #fff !important;
+}
+
+.dt-md-btn-dest {
+  background: #232F3E;
+  color: #fff !important;
+}
+
+.dt-md-btn-wa {
+  background: #25D366;
+  color: #fff !important;
+}
+
+.dt-md-btn-call {
+  background: #232F3E;
+  color: #FEBD69 !important;
+}
+
+/* Hotel / site cards (converted from markdown tables) */
+.dt-md-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.dt-md-card {
+  border: 1px solid rgba(35, 47, 62, 0.1);
+  border-radius: 14px;
+  padding: 0.75rem 0.8rem;
+  background: linear-gradient(180deg, #FFFbf5, #fff);
+  box-shadow: 0 2px 8px rgba(35, 47, 62, 0.04);
+}
+
+.dt-md-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin-bottom: 0.4rem;
+}
+
+.dt-md-card-num {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: rgba(255, 153, 0, 0.18);
+  color: #C45500;
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  margin-top: 0.1rem;
+}
+
+.dt-md-card h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #232F3E;
+  line-height: 1.3;
+  font-family: var(--font-display), Syne, sans-serif;
+}
+
+.dt-md-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  color: #4B5563;
+  margin-bottom: 0.35rem;
+}
+
+.dt-md-card-meta span {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.dt-md-card-meta i {
+  color: #E47911;
+  margin-top: 0.15rem;
+  width: 0.9rem;
+  text-align: center;
+}
+
+.dt-md-price {
+  font-weight: 750;
+  color: #232F3E !important;
+}
+
+.dt-md-card-desc {
+  margin: 0 0 0.45rem;
+  font-size: 0.8rem;
+  color: #64748B;
+  line-height: 1.45;
+}
+
+.dt-md-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* Fallback wide table */
+.dt-md-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(35, 47, 62, 0.1);
+  -webkit-overflow-scrolling: touch;
+}
+
+.dt-md-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  min-width: 420px;
+}
+
+.dt-md-table th,
+.dt-md-table td {
+  padding: 0.45rem 0.55rem;
+  border-bottom: 1px solid rgba(35, 47, 62, 0.08);
+  text-align: left;
+  vertical-align: top;
+}
+
+.dt-md-table th {
+  background: #232F3E;
+  color: #fff;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dt-md-table tr:nth-child(even) td {
+  background: rgba(255, 251, 245, 0.8);
+}
+
 @media (max-width: 575.98px) {
   .dt-chat-fab {
     right: max(0.85rem, env(safe-area-inset-right));
     bottom: 5.6rem;
     padding: 0.8rem;
   }
-  .dt-chat-fab-label {
-    display: none;
-  }
+  .dt-chat-fab-label { display: none; }
   .dt-chat-panel {
     right: max(0.65rem, env(safe-area-inset-right));
     left: max(0.65rem, env(safe-area-inset-left));
     width: auto;
     bottom: max(0.75rem, env(safe-area-inset-bottom));
-    height: min(78vh, 620px);
+    height: min(82vh, 680px);
   }
 }
