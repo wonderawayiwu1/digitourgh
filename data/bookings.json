@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "user_id": 2,
+    "hotel_id": 1,
+    "check_in_date": "2026-08-10",
+    "check_out_date": "2026-08-12",
+    "guests_count": 2,
+    "total_price": 360.0,
+    "status": "Confirmed",
+    "created_at": "2026-08-01 17:59:52",
+    "hotel_name": "Mövenpick Ambassador Hotel Accra",
+    "destination_title": "Kwame Nkrumah Memorial Park",
+    "user_name": "Kwame Mensah"
+  },
+  {
+    "id": 2,
+    "user_id": 3,
+    "hotel_id": 13,
+    "check_in_date": "2026-08-15",
+    "check_out_date": "2026-08-18",
+    "guests_count": 2,
+    "total_price": 165.0,
+    "status": "Confirmed",
+    "created_at": "2026-08-01 17:59:52",
+    "hotel_name": "Labadi Beach Hotel",
+    "destination_title": "Labadi Pleasure Beach",
+    "user_name": "Adwoa Boateng"
+  },
+  {
+    "id": 3,
+    "user_id": 2,
+    "hotel_id": 40,
+    "check_in_date": "2026-08-03",
+    "check_out_date": "2026-08-05",
+    "guests_count": 1,
+    "total_price": 80.0,
+    "status": "Pending",
+    "created_at": "2026-08-02 12:22:58",
+    "hotel_name": "The Rainforest Lodge Kakum",
+    "destination_title": "Kakum National Park Canopy Walkway",
+    "user_name": "Kwame Mensah"
+  }
+]

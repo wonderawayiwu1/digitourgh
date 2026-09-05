@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "rating": 5,
+    "comment": "Visiting Kwame Nkrumah Memorial Park was a deeply moving cultural experience! The Mövenpick hotel nearby was world class.",
+    "full_name": "Kwame Mensah",
+    "dest_title": "Kwame Nkrumah Memorial Park",
+    "hotel_name": "Mövenpick Ambassador Hotel Accra",
+    "destination_id": 1,
+    "hotel_id": 1,
+    "status": "Approved"
+  },
+  {
+    "id": 2,
+    "rating": 5,
+    "comment": "Walking across the canopy walkway at Kakum National Park was unforgettable! The Rainforest Lodge was peaceful and clean.",
+    "full_name": "Adwoa Boateng",
+    "dest_title": "Kakum National Park Canopy Walkway",
+    "hotel_name": "Labadi Beach Hotel",
+    "destination_id": 32,
+    "hotel_id": 13,
+    "status": "Approved"
+  },
+  {
+    "id": 3,
+    "rating": 4,
+    "comment": "I enjoyed the holiday at this lake",
+    "full_name": "Kwame Mensah",
+    "dest_title": "Lake Bosomtwe",
+    "hotel_name": null,
+    "destination_id": 19,
+    "hotel_id": null,
+    "status": "Approved"
+  },
+  {
+    "id": 4,
+    "rating": 5,
+    "comment": "This is a very great historical site",
+    "full_name": "Kwame Mensah",
+    "dest_title": "Mim Lake",
+    "hotel_name": null,
+    "destination_id": 105,
+    "hotel_id": null,
+    "status": "Approved"
+  }
+]

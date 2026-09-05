@@ -1,0 +1,101 @@
+{
+  "site_name": "DigiTour Ghana",
+  "tagline": "Smart Tourism & Accommodation Portal",
+  "phone_local": "0549326089",
+  "phone_e164": "233549326089",
+  "tel": "tel:+233549326089",
+  "whatsapp": "https://wa.me/233549326089",
+  "email_info": "info@digitour.gh",
+  "email_support": "support@digitour.gh",
+  "address": "Tourism Board Building, Accra, Ghana",
+  "total_destinations": 105,
+  "total_hotels": 97,
+  "matched_destination_images": 105,
+  "matched_hotel_images": 94,
+  "regions": [
+    "Ahafo Region",
+    "Ashanti Region",
+    "Bono East Region",
+    "Bono Region",
+    "Central Region",
+    "Eastern Region",
+    "Greater Accra",
+    "North East Region",
+    "Northern Region",
+    "Oti Region",
+    "Savannah Region",
+    "Upper East Region",
+    "Upper West Region",
+    "Volta Region",
+    "Western North Region",
+    "Western Region"
+  ],
+  "categories": [
+    "Beach",
+    "Culture & Heritage",
+    "History",
+    "History & Culture",
+    "Nature & Waterways",
+    "Nature & Wildlife"
+  ],
+  "hero_slides": [
+    {
+      "label": "Kakum Rainforest",
+      "title": "Walk Above the Rainforest Canopy",
+      "desc": "Experience West Africa's iconic canopy walkway suspended above ancient tropical rainforest in Ghana's Central Region.",
+      "url": "destination-detail.html?id=32",
+      "video": "sources/videos/kakum-park.mp4",
+      "poster": "sources/images/all_tourist_sites/Kakum%20National%20Park%20Canopy%20Walkway.jpg"
+    },
+    {
+      "label": "Cape Coast Heritage",
+      "title": "Stand Where History Echoes",
+      "desc": "Walk UNESCO World Heritage fortresses overlooking the Atlantic — Cape Coast Castle and Elmina's storied walls.",
+      "url": "destination-detail.html?id=33",
+      "video": "sources/videos/cape-coast-catle-3.mp4",
+      "poster": "sources/images/all_tourist_sites/Cape%20Coast%20Castle.jpg"
+    },
+    {
+      "label": "Larabanga Legacy",
+      "title": "Discover Ancient Mud Architecture",
+      "desc": "Visit Ghana's oldest mosque (c. 1421) and the sacred Mystic Stone in the heart of the Savannah Region.",
+      "url": "destination-detail.html?id=92",
+      "video": "sources/videos/larabanga-mosque.mp4",
+      "poster": "sources/images/all_tourist_sites/Larabanga%20Mosque.jpg"
+    },
+    {
+      "label": "Nkrumah Memorial",
+      "title": "Honor Ghana's Founding Vision",
+      "desc": "Explore marble gardens, personal artifacts, and the story of independence at Kwame Nkrumah Memorial Park.",
+      "url": "destination-detail.html?id=1",
+      "video": "sources/videos/kwame-nkrumah-museum.mp4",
+      "poster": "sources/images/all_tourist_sites/Kwame%20Nkrumah%20Memorial%20Park.jpg"
+    }
+  ],
+  "page_bg": [
+    "sources/images/all_tourist_sites/Kakum%20National%20Park%20Canopy%20Walkway.jpg",
+    "sources/images/all_tourist_sites/Cape%20Coast%20Castle.jpg",
+    "sources/images/all_tourist_sites/Wli%20Waterfalls.jpg",
+    "sources/images/all_tourist_sites/Mole%20National%20Park.jpg"
+  ],
+  "demo_users": [
+    {
+      "email": "kwame@example.com",
+      "password": "demo123",
+      "name": "Kwame Mensah",
+      "role": "tourist"
+    },
+    {
+      "email": "adwoa@example.com",
+      "password": "demo123",
+      "name": "Adwoa Boateng",
+      "role": "tourist"
+    },
+    {
+      "email": "admin@digitour.gh",
+      "password": "demo123",
+      "name": "Ghana Tourism Admin",
+      "role": "admin"
+    }
+  ]
+}

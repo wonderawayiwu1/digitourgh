@@ -1,0 +1,1842 @@
+[
+  {
+    "id": 1,
+    "destination_id": 1,
+    "name": "Mövenpick Ambassador Hotel Accra",
+    "description": "5-star luxury hotel in central Accra featuring lush gardens, outdoor pool, and fine dining.",
+    "price_per_night": 180.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 261 1000",
+    "contact_email": "reservations.accra@movenpick.com",
+    "image": "movenpick.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/M%C3%B6venpick%20Ambassador%20Hotel%20Accra.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/M%C3%B6venpick%20Ambassador%20Hotel%20Accra.jpg",
+      "sources/images/all_tourist_sites/Hotels/M%C3%B6venpick%20Ambassador%20Hotel%20Accra%20-1.webp"
+    ],
+    "destination_title": "Kwame Nkrumah Memorial Park",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 2,
+    "destination_id": 1,
+    "name": "Mantra Hotel Accra",
+    "description": "Modern boutique hotel minutes away from Kwame Nkrumah Memorial Park.",
+    "price_per_night": 75.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 555 0101",
+    "contact_email": "stay@mantraaccra.com",
+    "image": "mantra_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Mantra%20Hotel%20Accra.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Mantra%20Hotel%20Accra.jpg",
+      "sources/images/all_tourist_sites/Hotels/Mantra%20Hotel%20Accra%20-1.jpg"
+    ],
+    "destination_title": "Kwame Nkrumah Memorial Park",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 3,
+    "destination_id": 2,
+    "name": "Kempinski Hotel Gold Coast City",
+    "description": "Ultra-luxury 5-star hotel near Independence Square with spa, infinity pool, and high-end suites.",
+    "price_per_night": 220.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 243 6000",
+    "contact_email": "reservations.accra@kempinski.com",
+    "image": "kempinski.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Kempinski%20Hotel%20Gold%20Coast%20City.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Kempinski%20Hotel%20Gold%20Coast%20City.jpg",
+      "sources/images/all_tourist_sites/Hotels/Kempinski%20Hotel%20Gold%20Coast%20City%20-1.jpg"
+    ],
+    "destination_title": "Black Star Square (Independence Square)",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 4,
+    "destination_id": 2,
+    "name": "La Villa Boutique Hotel",
+    "description": "Chic boutique oasis in Osu featuring poolside dining and serene garden rooms.",
+    "price_per_night": 95.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 278 1956",
+    "contact_email": "info@lavillaghana.com",
+    "image": "la_villa.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/La%20Villa%20Boutique%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/La%20Villa%20Boutique%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/La%20Villa%20Boutique%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Black Star Square (Independence Square)",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 5,
+    "destination_id": 3,
+    "name": "Olma Colonial Suites",
+    "description": "Restored colonial style apartment suites right near Osu Beachfront.",
+    "price_per_night": 110.0,
+    "room_capacity": 3,
+    "contact_phone": "+233 30 279 8899",
+    "contact_email": "booking@olmasuites.com",
+    "image": "olma_suites.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
+    ],
+    "destination_title": "Osu Castle (Christiansborg)",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 6,
+    "destination_id": 3,
+    "name": "Roots Apartment Hotel",
+    "description": "Contemporary self-catering hotel in the heart of vibrant Osu.",
+    "price_per_night": 85.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 274 2580",
+    "contact_email": "info@rootshotel.com",
+    "image": "roots_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Roots%20Apartment%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Roots%20Apartment%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Roots%20Apartment%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Osu Castle (Christiansborg)",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 7,
+    "destination_id": 4,
+    "name": "Ussher Fort Guest House",
+    "description": "Budget heritage rest house overlooking old Jamestown harbor.",
+    "price_per_night": 30.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 333 4455",
+    "contact_email": "ussherguesthouse@gmail.com",
+    "image": "ussher_guesthouse.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Ussher%20Fort%20Guest%20House.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Ussher%20Fort%20Guest%20House.jpg",
+      "sources/images/all_tourist_sites/Hotels/Ussher%20Fort%20Guest%20House%20-1.jpg"
+    ],
+    "destination_title": "Jamestown Lighthouse",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 8,
+    "destination_id": 4,
+    "name": "Jamestown Cafe & Transit Rooms",
+    "description": "Artistic guesthouse and cafe popular with culture travelers.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 20 123 4567",
+    "contact_email": "stay@jamestowncafe.com",
+    "image": "jamestown_cafe.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
+    ],
+    "destination_title": "Jamestown Lighthouse",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 9,
+    "destination_id": 5,
+    "name": "Accra City Hotel",
+    "description": "4-star hotel in Adabraka within walking distance to National Museum.",
+    "price_per_night": 120.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 263 3863",
+    "contact_email": "info@accracityhotel.com",
+    "image": "accra_city_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Accra%20City%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Accra%20City%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Accra%20City%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "National Museum of Ghana",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 10,
+    "destination_id": 6,
+    "name": "Cantonments Luxury Suites",
+    "description": "High-end serviced apartments in Cantonments near Du Bois Center.",
+    "price_per_night": 140.0,
+    "room_capacity": 4,
+    "contact_phone": "+233 30 277 8899",
+    "contact_email": "reservations@cantonmentssuites.com",
+    "image": "cantonments_suites.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Cantonments%20Luxury%20Suites.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Cantonments%20Luxury%20Suites.jpg",
+      "sources/images/all_tourist_sites/Hotels/Cantonments%20Luxury%20Suites%20-1.jpg"
+    ],
+    "destination_title": "W.E.B. Du Bois Memorial Centre",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 11,
+    "destination_id": 6,
+    "name": "Alisa Hotel North Ridge",
+    "description": "Premier conference hotel featuring swimming pools and tennis courts.",
+    "price_per_night": 130.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 221 4244",
+    "contact_email": "info@alisahotels.com",
+    "image": "alisa_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Alisa%20Hotel%20North%20Ridge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Alisa%20Hotel%20North%20Ridge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Alisa%20Hotel%20North%20Ridge%20-1.jpg"
+    ],
+    "destination_title": "W.E.B. Du Bois Memorial Centre",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 12,
+    "destination_id": 7,
+    "name": "Midindi Hotel",
+    "description": "Boutique hotel providing quick access to central markets.",
+    "price_per_night": 70.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 277 5580",
+    "contact_email": "stay@midindihotel.com",
+    "image": "midindi_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Midindi%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Midindi%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Midindi%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Makola Market",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 13,
+    "destination_id": 8,
+    "name": "Labadi Beach Hotel",
+    "description": "Ghana's flagship 5-star beachfront resort featuring private beach access and dining.",
+    "price_per_night": 190.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 277 2501",
+    "contact_email": "labadi@labadibeachhotel.com",
+    "image": "labadi_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Labadi%20Beach%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Labadi%20Beach%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Labadi%20Beach%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Labadi Pleasure Beach",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 14,
+    "destination_id": 8,
+    "name": "Alora Beach Resort",
+    "description": "Luxury beachfront resort with oceanview lounges.",
+    "price_per_night": 150.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 50 111 2233",
+    "contact_email": "info@alorabeach.com",
+    "image": "alora_resort.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Alora%20Beach%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Alora%20Beach%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Alora%20Beach%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Labadi Pleasure Beach",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 15,
+    "destination_id": 9,
+    "name": "Bojo Beach Resort",
+    "description": "Directly located on-site across lagoon with waterfront rooms.",
+    "price_per_night": 80.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 291 1907",
+    "contact_email": "info@bojobeachresort.com",
+    "image": "bojo_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Bojo%20Beach%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Bojo%20Beach%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Bojo%20Beach%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Bojo Beach",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 16,
+    "destination_id": 10,
+    "name": "Kokrobite Garden Hotel",
+    "description": "Tropical garden hotel near the beach with Italian restaurant.",
+    "price_per_night": 45.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 498 4880",
+    "contact_email": "kokrobitegarden@gmail.com",
+    "image": "kokrobite_garden.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Kokrobite%20Garden%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Kokrobite%20Garden%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Kokrobite%20Garden%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Kokrobite Beach",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 17,
+    "destination_id": 10,
+    "name": "Big Milly's Backyard",
+    "description": "Famous beachfront lodge with live reggae music and backpacker vibes.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 271 2838",
+    "contact_email": "bigmillys@gmail.com",
+    "image": "big_millys.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Big%20Milly%27s%20Backyard.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Big%20Milly%27s%20Backyard.jpg",
+      "sources/images/all_tourist_sites/Hotels/Big%20Milly%27s%20Backyard%20-1.jpg"
+    ],
+    "destination_title": "Kokrobite Beach",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 18,
+    "destination_id": 11,
+    "name": "Fiesta Royale Hotel",
+    "description": "4-star hotel near Achimota forest featuring luxury suites.",
+    "price_per_night": 140.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 274 0811",
+    "contact_email": "info@fiestaroyalehotel.com",
+    "image": "fiesta_royale.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Fiesta%20Royale%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Fiesta%20Royale%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Fiesta%20Royale%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Achimota Forest and Accra Zoo",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 19,
+    "destination_id": 12,
+    "name": "University of Ghana Guest House",
+    "description": "Peaceful green guesthouse inside Legon campus.",
+    "price_per_night": 50.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 250 0381",
+    "contact_email": "guesthouse@ug.edu.gh",
+    "image": "ug_guesthouse.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/University%20of%20Ghana%20Guest%20House.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/University%20of%20Ghana%20Guest%20House.jpg",
+      "sources/images/all_tourist_sites/Hotels/University%20of%20Ghana%20Guest%20House%20-1.jpg"
+    ],
+    "destination_title": "Legon Botanical Gardens",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 20,
+    "destination_id": 13,
+    "name": "Shai Hills Luxury Eco-Lodge",
+    "description": "Scenic eco-lodge nestled near the hills of the game reserve.",
+    "price_per_night": 90.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 000 8899",
+    "contact_email": "info@shaihillslodge.com",
+    "image": "shai_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Shai%20Hills%20Luxury%20Eco-Lodge.webp",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Shai%20Hills%20Luxury%20Eco-Lodge.webp",
+      "sources/images/all_tourist_sites/Hotels/Shai%20Hills%20Luxury%20Eco-Lodge%20-1.webp"
+    ],
+    "destination_title": "Shai Hills Resource Reserve",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 21,
+    "destination_id": 13,
+    "name": "The Stone Lodge Asutsuare",
+    "description": "Country resort featuring swimming pool and quiet hill views.",
+    "price_per_night": 70.0,
+    "room_capacity": 3,
+    "contact_phone": "+233 24 431 3411",
+    "contact_email": "info@stonelodgeghana.com",
+    "image": "stone_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/The%20Stone%20Lodge%20Asutsuare.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/The%20Stone%20Lodge%20Asutsuare.jpg",
+      "sources/images/all_tourist_sites/Hotels/The%20Stone%20Lodge%20Asutsuare%20-1.jpg"
+    ],
+    "destination_title": "Shai Hills Resource Reserve",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 22,
+    "destination_id": 14,
+    "name": "Treasure Island Resort Ada",
+    "description": "On-site luxury resort with river pool and water sports.",
+    "price_per_night": 120.0,
+    "room_capacity": 4,
+    "contact_phone": "+233 54 000 1122",
+    "contact_email": "info@treasureislandada.com",
+    "image": "treasure_island_resort.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Treasure%20Island%20Resort%20Ada.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Treasure%20Island%20Resort%20Ada.jpg",
+      "sources/images/all_tourist_sites/Hotels/Treasure%20Island%20Resort%20Ada%20-1.jpg"
+    ],
+    "destination_title": "Treasure Island",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 23,
+    "destination_id": 14,
+    "name": "Aqua Safari Resort",
+    "description": "Top luxury riverfront resort across Ada estuary.",
+    "price_per_night": 160.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 298 3333",
+    "contact_email": "reservations@aquasafariresort.com",
+    "image": "aqua_safari.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Aqua%20Safari%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Aqua%20Safari%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Aqua%20Safari%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Treasure Island",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 24,
+    "destination_id": 15,
+    "name": "Rising Phoenix Eco-Hotel",
+    "description": "Cliffside eco-hotel overlooking old Accra coastline.",
+    "price_per_night": 40.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 467 8900",
+    "contact_email": "risingphoenix@gmail.com",
+    "image": "rising_phoenix.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Rising%20Phoenix%20Eco-Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Rising%20Phoenix%20Eco-Hotel.jpg"
+    ],
+    "destination_title": "Fort Great George",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 25,
+    "destination_id": 16,
+    "name": "Royal Ravico Hotel Teshie",
+    "description": "Comfortable beachside hotel in Teshie-Nungua area.",
+    "price_per_night": 60.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 271 3344",
+    "contact_email": "royalravico@gmail.com",
+    "image": "royal_ravico.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Royal%20Ravico%20Hotel%20Teshie.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Royal%20Ravico%20Hotel%20Teshie.jpg",
+      "sources/images/all_tourist_sites/Hotels/Royal%20Ravico%20Hotel%20Teshie%20-1.jpg"
+    ],
+    "destination_title": "Teshie Saneba Bead Factory",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 26,
+    "destination_id": 17,
+    "name": "Teshie Beach Guest House",
+    "description": "Cozy guest lodge near carpentry workshops and beach.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 567 8901",
+    "contact_email": "teshiebeachguesthouse@gmail.com",
+    "image": "teshie_guesthouse.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Teshie%20Beach%20Guest%20House.avif",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Teshie%20Beach%20Guest%20House.avif",
+      "sources/images/all_tourist_sites/Hotels/Teshie%20Beach%20Guest%20House%20-1.jpg",
+      "sources/images/all_tourist_sites/Hotels/Teshie%20Beach%20Guest%20House%20-2.avif"
+    ],
+    "destination_title": "Kane Kwei Carpentry Workshop",
+    "region": "Greater Accra"
+  },
+  {
+    "id": 27,
+    "destination_id": 18,
+    "name": "Golden Tulip Kumasi City",
+    "description": "4-star luxury hotel in central Kumasi with lush gardens.",
+    "price_per_night": 130.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 32 208 3700",
+    "contact_email": "info@goldentulipkumasicity.com",
+    "image": "golden_tulip_kumasi.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Golden%20Tulip%20Kumasi%20City.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Golden%20Tulip%20Kumasi%20City.jpg",
+      "sources/images/all_tourist_sites/Hotels/Golden%20Tulip%20Kumasi%20City%20-1.jpg"
+    ],
+    "destination_title": "Manhyia Palace Museum",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 28,
+    "destination_id": 18,
+    "name": "Sir Max Hotel",
+    "description": "Comfortable business hotel near Manhyia Palace.",
+    "price_per_night": 65.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 32 204 4555",
+    "contact_email": "info@sirmaxhotel.com",
+    "image": "sir_max_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Sir%20Max%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Sir%20Max%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Sir%20Max%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Manhyia Palace Museum",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 29,
+    "destination_id": 19,
+    "name": "The Wild Gecko Resort",
+    "description": "Waterfront resort overlooking Lake Bosomtwe.",
+    "price_per_night": 60.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 321 0000",
+    "contact_email": "wildgecko@gmail.com",
+    "image": "wild_gecko.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/The%20Wild%20Gecko%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/The%20Wild%20Gecko%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/The%20Wild%20Gecko%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Lake Bosomtwe",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 30,
+    "destination_id": 19,
+    "name": "Lake Bosomtwe Paradise Resort",
+    "description": "Scenic lakefront lodge offering boat rides and serene views.",
+    "price_per_night": 70.0,
+    "room_capacity": 3,
+    "contact_phone": "+233 32 209 1122",
+    "contact_email": "info@paradiseresort.gh",
+    "image": "bosomtwe_paradise.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Lake%20Bosomtwe%20Paradise%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Lake%20Bosomtwe%20Paradise%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Lake%20Bosomtwe%20Paradise%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Lake Bosomtwe",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 31,
+    "destination_id": 20,
+    "name": "Hotel Georgia Kumasi",
+    "description": "Historic Kumasi hotel offering dining and conference halls.",
+    "price_per_night": 75.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 32 202 3915",
+    "contact_email": "hotelgeorgia@gmail.com",
+    "image": "hotel_georgia.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Hotel%20Georgia%20Kumasi.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Hotel%20Georgia%20Kumasi.jpg",
+      "sources/images/all_tourist_sites/Hotels/Hotel%20Georgia%20Kumasi%20-1.jpg"
+    ],
+    "destination_title": "Kejetia Market",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 32,
+    "destination_id": 21,
+    "name": "Golden Bean Hotel",
+    "description": "Premier boutique hotel near Okomfo Anokye Sword site.",
+    "price_per_night": 110.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 32 208 8000",
+    "contact_email": "info@goldenbeanhotel.com",
+    "image": "golden_bean.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Golden%20Bean%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Golden%20Bean%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Golden%20Bean%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Okomfo Anokye Sword Site",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 33,
+    "destination_id": 22,
+    "name": "Ejisu Grace Court Hotel",
+    "description": "Cozy hotel near Bonwire Kente weaving village.",
+    "price_per_night": 45.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 777 8899",
+    "contact_email": "gracecourt@gmail.com",
+    "image": "grace_court.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Ejisu%20Grace%20Court%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Ejisu%20Grace%20Court%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Ejisu%20Grace%20Court%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Bonwire Kente Village",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 34,
+    "destination_id": 23,
+    "name": "Adanwomase Community Eco-Guest House",
+    "description": "Rustic village eco-lodge hosted by local weaving community.",
+    "price_per_night": 25.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 111 9900",
+    "contact_email": "adanwomaseeco@gmail.com",
+    "image": "adanwomase_guesthouse.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Adanwomase%20Community%20Eco-Guest%20House.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Adanwomase%20Community%20Eco-Guest%20House.jpg",
+      "sources/images/all_tourist_sites/Hotels/Adanwomase%20Community%20Eco-Guest%20House%20-1.jpg"
+    ],
+    "destination_title": "Adanwomase Kente Village",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 35,
+    "destination_id": 24,
+    "name": "Gyamfi Hotel Ntonso",
+    "description": "Local guesthouse near Adinkra stamping craft village.",
+    "price_per_night": 30.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 222 1100",
+    "contact_email": "gyamfihotel@gmail.com",
+    "image": "gyamfi_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
+    ],
+    "destination_title": "Ntonso Adinkra Village",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 36,
+    "destination_id": 25,
+    "name": "Royal Basin Resort",
+    "description": "4-star garden resort a short drive from Ahwiaa.",
+    "price_per_night": 85.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 32 206 0144",
+    "contact_email": "royalbasin@gmail.com",
+    "image": "royal_basin.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Royal%20Basin%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Royal%20Basin%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Royal%20Basin%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Ahwiaa Woodcarving Village",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 37,
+    "destination_id": 26,
+    "name": "Bobiri Forest Eco-Lodge",
+    "description": "Rustic guesthouse located right inside the butterfly sanctuary.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 333 2211",
+    "contact_email": "bobirilodge@gmail.com",
+    "image": "bobiri_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Bobiri%20Forest%20Eco-Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Bobiri%20Forest%20Eco-Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Bobiri%20Forest%20Eco-Lodge%20-1.jpg"
+    ],
+    "destination_title": "Bobiri Forest Reserve & Butterfly Sanctuary",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 38,
+    "destination_id": 27,
+    "name": "Asantewaa Premier Guesthouse",
+    "description": "Heritage guesthouse named after Yaa Asantewaa near Kumasi Zoo.",
+    "price_per_night": 50.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 32 203 5566",
+    "contact_email": "asantewaapremier@gmail.com",
+    "image": "asantewaa_guesthouse.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Asantewaa%20Premier%20Guesthouse.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Asantewaa%20Premier%20Guesthouse.jpg",
+      "sources/images/all_tourist_sites/Hotels/Asantewaa%20Premier%20Guesthouse%20-1.jpg"
+    ],
+    "destination_title": "Kumasi Zoological Gardens",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 39,
+    "destination_id": 31,
+    "name": "Cofkans Hotel Obuasi",
+    "description": "Modern hotel in Obuasi town with swimming pool.",
+    "price_per_night": 65.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 32 242 0500",
+    "contact_email": "cofkanshotel@gmail.com",
+    "image": "cofkans_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Cofkans%20Hotel%20Obuasi.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Cofkans%20Hotel%20Obuasi.jpg",
+      "sources/images/all_tourist_sites/Hotels/Cofkans%20Hotel%20Obuasi%20-1.jpg"
+    ],
+    "destination_title": "Obuasi Gold Mine (Surface Tours)",
+    "region": "Ashanti Region"
+  },
+  {
+    "id": 40,
+    "destination_id": 32,
+    "name": "The Rainforest Lodge Kakum",
+    "description": "Serene eco-lodge located right at the edge of Kakum National Park.",
+    "price_per_night": 40.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 111 2233",
+    "contact_email": "stay@rainforestlodge.gh",
+    "image": "rainforest_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/The%20Rainforest%20Lodge%20Kakum.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/The%20Rainforest%20Lodge%20Kakum.jpg",
+      "sources/images/all_tourist_sites/Hotels/The%20Rainforest%20Lodge%20Kakum%20-1.jpg"
+    ],
+    "destination_title": "Kakum National Park Canopy Walkway",
+    "region": "Central Region"
+  },
+  {
+    "id": 41,
+    "destination_id": 32,
+    "name": "Hans Cottage Botel",
+    "description": "Famous botel built over a crocodile pond near Kakum.",
+    "price_per_night": 55.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 33 213 2260",
+    "contact_email": "hansbotel@gmail.com",
+    "image": "hans_cottage.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Hans%20Cottage%20Botel.avif",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Hans%20Cottage%20Botel.avif",
+      "sources/images/all_tourist_sites/Hotels/Hans%20Cottage%20Botel%20-1.jpg"
+    ],
+    "destination_title": "Kakum National Park Canopy Walkway",
+    "region": "Central Region"
+  },
+  {
+    "id": 42,
+    "destination_id": 33,
+    "name": "Ridge Royal Hotel Cape Coast",
+    "description": "Luxury hilltop hotel overlooking Cape Coast coastline.",
+    "price_per_night": 120.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 33 213 8000",
+    "contact_email": "info@ridgeroyalhotel.com",
+    "image": "ridge_royal.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Ridge%20Royal%20Hotel%20Cape%20Coast.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Ridge%20Royal%20Hotel%20Cape%20Coast.jpg",
+      "sources/images/all_tourist_sites/Hotels/Ridge%20Royal%20Hotel%20Cape%20Coast%20-1.jpg"
+    ],
+    "destination_title": "Cape Coast Castle",
+    "region": "Central Region"
+  },
+  {
+    "id": 43,
+    "destination_id": 33,
+    "name": "Cape Coast Beach Resort",
+    "description": "Beachfront hotel offering ocean views and fresh seafood.",
+    "price_per_night": 55.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 33 210 5050",
+    "contact_email": "reservations@capecoastbeachresort.com",
+    "image": "cape_coast_resort.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Cape%20Coast%20Beach%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Cape%20Coast%20Beach%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Cape%20Coast%20Beach%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Cape Coast Castle",
+    "region": "Central Region"
+  },
+  {
+    "id": 44,
+    "destination_id": 34,
+    "name": "Elmina Beach Resort",
+    "description": "4-star beachfront resort overlooking Atlantic Ocean.",
+    "price_per_night": 90.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 33 213 3333",
+    "contact_email": "info@elminabeachresort.com",
+    "image": "elmina_beach_resort.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Elmina%20Beach%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Elmina%20Beach%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Elmina%20Beach%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Elmina Castle (St. George's)",
+    "region": "Central Region"
+  },
+  {
+    "id": 45,
+    "destination_id": 34,
+    "name": "Golden Hill Parker Hotel",
+    "description": "Hilltop boutique hotel with panoramic views of Elmina Castle.",
+    "price_per_night": 80.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 33 213 9999",
+    "contact_email": "info@goldenhillparker.com",
+    "image": "golden_hill_parker.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Golden%20Hill%20Parker%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Golden%20Hill%20Parker%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Golden%20Hill%20Parker%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Elmina Castle (St. George's)",
+    "region": "Central Region"
+  },
+  {
+    "id": 46,
+    "destination_id": 35,
+    "name": "One Africa Eco-Lodge",
+    "description": "Beachfront eco-lodge near Elmina hilltops.",
+    "price_per_night": 45.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 400 1122",
+    "contact_email": "oneafrica@gmail.com",
+    "image": "one_africa.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/One%20Africa%20Eco-Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/One%20Africa%20Eco-Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/One%20Africa%20Eco-Lodge%20-1.avif"
+    ],
+    "destination_title": "Fort Jago (Coenraadsburg)",
+    "region": "Central Region"
+  },
+  {
+    "id": 47,
+    "destination_id": 36,
+    "name": "Assin Manso Heritage Rest Stop",
+    "description": "Clean rest house near Slave River site.",
+    "price_per_night": 25.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 555 4433",
+    "contact_email": "assinmansorest@gmail.com",
+    "image": "assin_manso_rest.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Assin%20Manso%20Heritage%20Rest%20Stop.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Assin%20Manso%20Heritage%20Rest%20Stop.jpg",
+      "sources/images/all_tourist_sites/Hotels/Assin%20Manso%20Heritage%20Rest%20Stop%20-1.jpg"
+    ],
+    "destination_title": "Assin Manso Slave River Site",
+    "region": "Central Region"
+  },
+  {
+    "id": 48,
+    "destination_id": 37,
+    "name": "Mankessim Beach Resort",
+    "description": "Coastal resort near Mankessim Posuban shrines.",
+    "price_per_night": 50.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 33 209 8877",
+    "contact_email": "mankessimresort@gmail.com",
+    "image": "mankessim_resort.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Mankessim%20Beach%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Mankessim%20Beach%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Mankessim%20Beach%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Posuban Shrines",
+    "region": "Central Region"
+  },
+  {
+    "id": 49,
+    "destination_id": 38,
+    "name": "Brenu Beach Lodge",
+    "description": "Secluded beach lodge right on Brenu white sand shoreline.",
+    "price_per_night": 45.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 333 8899",
+    "contact_email": "brenubeach@gmail.com",
+    "image": "brenu_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Brenu%20Beach%20Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Brenu%20Beach%20Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Brenu%20Beach%20Lodge%20-1.jpg"
+    ],
+    "destination_title": "Brenu Beach",
+    "region": "Central Region"
+  },
+  {
+    "id": 50,
+    "destination_id": 39,
+    "name": "Windy Lodge Beach Resort",
+    "description": "Oceanfront lodge in Winneba near Ramsar site.",
+    "price_per_night": 50.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 33 232 2000",
+    "contact_email": "windylodge@gmail.com",
+    "image": "windy_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Windy%20Lodge%20Beach%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Windy%20Lodge%20Beach%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Windy%20Lodge%20Beach%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Winneba Lagoon and Muni-Pomadze Ramsar Site",
+    "region": "Central Region"
+  },
+  {
+    "id": 51,
+    "destination_id": 40,
+    "name": "Beyin Eco-Lodge",
+    "description": "Footsteps away from Fort Apollonia and stilt village dock.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 111 0099",
+    "contact_email": "beyineco@gmail.com",
+    "image": "beyin_ecolodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Beyin%20Eco-Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Beyin%20Eco-Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Beyin%20Eco-Lodge%20-1.jpg"
+    ],
+    "destination_title": "Fort Apollonia Museum",
+    "region": "Central Region"
+  },
+  {
+    "id": 52,
+    "destination_id": 41,
+    "name": "Anomabo Beach Resort",
+    "description": "Charming beachfront resort near Fort Amsterdam.",
+    "price_per_night": 75.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 33 219 2000",
+    "contact_email": "info@anomabobeachresort.com",
+    "image": "anomabo_resort.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Anomabo%20Beach%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Anomabo%20Beach%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Anomabo%20Beach%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Fort Amsterdam",
+    "region": "Central Region"
+  },
+  {
+    "id": 53,
+    "destination_id": 43,
+    "name": "Amansuri Eco-Lodge Beyin",
+    "description": "Landing dock eco-lodge for canoe rides to Nzulezo.",
+    "price_per_night": 40.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 666 7788",
+    "contact_email": "amansurieco@gmail.com",
+    "image": "amansuri_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Amansuri%20Eco-Lodge%20Beyin.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Amansuri%20Eco-Lodge%20Beyin.jpg",
+      "sources/images/all_tourist_sites/Hotels/Amansuri%20Eco-Lodge%20Beyin%20-1.jpg"
+    ],
+    "destination_title": "Nzulezo Stilt Village",
+    "region": "Western Region"
+  },
+  {
+    "id": 54,
+    "destination_id": 44,
+    "name": "Busua Beach Resort",
+    "description": "Flagship surfing beach resort in Busua village.",
+    "price_per_night": 70.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 31 209 2600",
+    "contact_email": "info@busuabeach.com",
+    "image": "busua_resort.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Busua%20Beach%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Busua%20Beach%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Busua%20Beach%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Busua Beach",
+    "region": "Western Region"
+  },
+  {
+    "id": 55,
+    "destination_id": 44,
+    "name": "Ahanta Eco-Lodge",
+    "description": "Cozy eco-friendly surfing lodge right on Busua sand.",
+    "price_per_night": 45.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 555 6677",
+    "contact_email": "ahantaeco@gmail.com",
+    "image": "ahanta_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Ahanta%20Eco-Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Ahanta%20Eco-Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Ahanta%20Eco-Lodge%20-1.webp"
+    ],
+    "destination_title": "Busua Beach",
+    "region": "Western Region"
+  },
+  {
+    "id": 56,
+    "destination_id": 45,
+    "name": "Ankasa Park Campsite & French Lodge",
+    "description": "Forest lodge and eco-tents at Ankasa frontier.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 222 4455",
+    "contact_email": "ankasacamp@gmail.com",
+    "image": "ankasa_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Ankasa%20Park%20Campsite%20%26%20French%20Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Ankasa%20Park%20Campsite%20%26%20French%20Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Ankasa%20Park%20Campsite%20%26%20French%20Lodge%20-1.jpg"
+    ],
+    "destination_title": "Ankasa Conservation Area",
+    "region": "Western Region"
+  },
+  {
+    "id": 57,
+    "destination_id": 46,
+    "name": "Green Turtle Lodge Akwidaa",
+    "description": "Famous solar-powered beach eco-lodge near Dixcove.",
+    "price_per_night": 40.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 333 5566",
+    "contact_email": "greenturtle@gmail.com",
+    "image": "green_turtle.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Green%20Turtle%20Lodge%20Akwidaa.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Green%20Turtle%20Lodge%20Akwidaa.jpg",
+      "sources/images/all_tourist_sites/Hotels/Green%20Turtle%20Lodge%20Akwidaa%20-1.jpg"
+    ],
+    "destination_title": "Fort Metal Cross",
+    "region": "Western Region"
+  },
+  {
+    "id": 58,
+    "destination_id": 47,
+    "name": "Lou Moon Resort Axim",
+    "description": "Luxury boutique cove resort with private beach bay.",
+    "price_per_night": 190.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 432 5555",
+    "contact_email": "reservations@loumoonresort.com",
+    "image": "lou_moon.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Lou%20Moon%20Resort%20Axim.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Lou%20Moon%20Resort%20Axim.jpg",
+      "sources/images/all_tourist_sites/Hotels/Lou%20Moon%20Resort%20Axim%20-1.jpg"
+    ],
+    "destination_title": "Axim Beach & Lou Moon Resort",
+    "region": "Western Region"
+  },
+  {
+    "id": 59,
+    "destination_id": 47,
+    "name": "Axim Beach Resort",
+    "description": "Clifftop wooden chalets overlooking rocky Axim coast.",
+    "price_per_night": 65.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 31 209 2233",
+    "contact_email": "aximbeachresort@gmail.com",
+    "image": "axim_resort.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Axim%20Beach%20Resort.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Axim%20Beach%20Resort.jpg",
+      "sources/images/all_tourist_sites/Hotels/Axim%20Beach%20Resort%20-1.jpg"
+    ],
+    "destination_title": "Axim Beach & Lou Moon Resort",
+    "region": "Western Region"
+  },
+  {
+    "id": 60,
+    "destination_id": 48,
+    "name": "Best Western Plus Atlantic Hotel Takoradi",
+    "description": "4-star luxury hotel in Sekondi-Takoradi twin city.",
+    "price_per_night": 130.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 31 202 3900",
+    "contact_email": "info@atlantichoteltakoradi.com",
+    "image": "atlantic_takoradi.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Best%20Western%20Plus%20Atlantic%20Hotel%20Takoradi.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Best%20Western%20Plus%20Atlantic%20Hotel%20Takoradi.jpg",
+      "sources/images/all_tourist_sites/Hotels/Best%20Western%20Plus%20Atlantic%20Hotel%20Takoradi%20-1.jpg"
+    ],
+    "destination_title": "Sekondi European Town",
+    "region": "Western Region"
+  },
+  {
+    "id": 61,
+    "destination_id": 49,
+    "name": "Fort Fredericksburg Guest Rooms",
+    "description": "Rustic historic rooms managed right inside the German fort.",
+    "price_per_night": 30.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 111 3322",
+    "contact_email": "fredericksburgfort@gmail.com",
+    "image": "fredericksburg_rooms.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Fort%20Fredericksburg%20Guest%20Rooms.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Fort%20Fredericksburg%20Guest%20Rooms.jpg",
+      "sources/images/all_tourist_sites/Hotels/Fort%20Fredericksburg%20Guest%20Rooms%20-1.avif"
+    ],
+    "destination_title": "Princess Town and Fort Fredericksburg",
+    "region": "Western Region"
+  },
+  {
+    "id": 62,
+    "destination_id": 50,
+    "name": "Escape 3 Points Eco-Lodge",
+    "description": "Solar-powered rustic beach cabins at Ghana's southernmost tip.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 666 4433",
+    "contact_email": "escape3points@gmail.com",
+    "image": "escape_3points.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Escape%203%20Points%20Eco-Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Escape%203%20Points%20Eco-Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Escape%203%20Points%20Eco-Lodge%20-1.jpg"
+    ],
+    "destination_title": "Cape Three Points",
+    "region": "Western Region"
+  },
+  {
+    "id": 63,
+    "destination_id": 51,
+    "name": "Hideout Lodge Butre",
+    "description": "Quiet beachfront chalets near Butre crocodile river.",
+    "price_per_night": 40.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 555 1122",
+    "contact_email": "hideoutbutre@gmail.com",
+    "image": "hideout_butre.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Hideout%20Lodge%20Butre.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Hideout%20Lodge%20Butre.jpg",
+      "sources/images/all_tourist_sites/Hotels/Hideout%20Lodge%20Butre%20-1.jpg"
+    ],
+    "destination_title": "Butre Crocodile River",
+    "region": "Western Region"
+  },
+  {
+    "id": 64,
+    "destination_id": 52,
+    "name": "Modern City Hotel Tamale",
+    "description": "Premier luxury hotel in Tamale with pool and gardens.",
+    "price_per_night": 85.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 37 202 2400",
+    "contact_email": "info@moderncityhotel.com",
+    "image": "modern_city_tamale.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Modern%20City%20Hotel%20Tamale.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Modern%20City%20Hotel%20Tamale.jpg",
+      "sources/images/all_tourist_sites/Hotels/Modern%20City%20Hotel%20Tamale%20-1.jpg"
+    ],
+    "destination_title": "Tamale Cultural Centre",
+    "region": "Northern Region"
+  },
+  {
+    "id": 65,
+    "destination_id": 52,
+    "name": "Picorna Hotel Tamale",
+    "description": "Centrally located hotel in Tamale city.",
+    "price_per_night": 50.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 37 202 2722",
+    "contact_email": "picornahotel@gmail.com",
+    "image": "picorna_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Picorna%20Hotel%20Tamale.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Picorna%20Hotel%20Tamale.jpg",
+      "sources/images/all_tourist_sites/Hotels/Picorna%20Hotel%20Tamale%20-1.jpg"
+    ],
+    "destination_title": "Tamale Cultural Centre",
+    "region": "Northern Region"
+  },
+  {
+    "id": 66,
+    "destination_id": 53,
+    "name": "Radach Lodge & Conference Centre",
+    "description": "Spacious lodge near Tamale Central Mosque.",
+    "price_per_night": 60.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 37 202 3211",
+    "contact_email": "radachlodge@gmail.com",
+    "image": "radach_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Radach%20Lodge%20%26%20Conference%20Centre.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Radach%20Lodge%20%26%20Conference%20Centre.jpg",
+      "sources/images/all_tourist_sites/Hotels/Radach%20Lodge%20%26%20Conference%20Centre%20-1.jpg"
+    ],
+    "destination_title": "Tamale Central Mosque",
+    "region": "Northern Region"
+  },
+  {
+    "id": 67,
+    "destination_id": 54,
+    "name": "Daboya District Assembly Guest House",
+    "description": "Riverside guesthouse in Daboya weaving village.",
+    "price_per_night": 25.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 444 3322",
+    "contact_email": "daboyaguesthouse@gmail.com",
+    "image": "daboya_guesthouse.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Daboya%20District%20Assembly%20Guest%20House.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Daboya%20District%20Assembly%20Guest%20House.jpg",
+      "sources/images/all_tourist_sites/Hotels/Daboya%20District%20Assembly%20Guest%20House%20-1.jpg"
+    ],
+    "destination_title": "Daboya Smock Weaving Village",
+    "region": "Northern Region"
+  },
+  {
+    "id": 68,
+    "destination_id": 55,
+    "name": "Yendi Gateway Hotel",
+    "description": "Hotel near Ya Naa sovereign palace in Yendi.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 37 209 8800",
+    "contact_email": "yendigateway@gmail.com",
+    "image": "yendi_gateway.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Yendi%20Gateway%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Yendi%20Gateway%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Yendi%20Gateway%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Yendi Naa Gbewaa Palace",
+    "region": "Northern Region"
+  },
+  {
+    "id": 69,
+    "destination_id": 56,
+    "name": "Waterfall Lodge Wli",
+    "description": "Charming lodge right at the entrance of Wli Waterfalls.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 999 1122",
+    "contact_email": "info@waterfalllodgewli.com",
+    "image": "wli_waterfall_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Waterfall%20Lodge%20Wli.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Waterfall%20Lodge%20Wli.jpg",
+      "sources/images/all_tourist_sites/Hotels/Waterfall%20Lodge%20Wli%20-1.jpg"
+    ],
+    "destination_title": "Wli Waterfalls",
+    "region": "Volta Region"
+  },
+  {
+    "id": 70,
+    "destination_id": 56,
+    "name": "Wli Water Heights Hotel",
+    "description": "Mountain view hotel at the foot of Wli falls.",
+    "price_per_night": 30.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 100 2200",
+    "contact_email": "wliheights@gmail.com",
+    "image": "wli_heights.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Wli%20Water%20Heights%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Wli%20Water%20Heights%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Wli%20Water%20Heights%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Wli Waterfalls",
+    "region": "Volta Region"
+  },
+  {
+    "id": 71,
+    "destination_id": 57,
+    "name": "Tagbo Falls Lodge",
+    "description": "Eco-lodge located right at the base trailhead of Afadjato.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 333 9988",
+    "contact_email": "tagbolodge@gmail.com",
+    "image": "tagbo_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Tagbo%20Falls%20Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Tagbo%20Falls%20Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Tagbo%20Falls%20Lodge%20-1.jpg"
+    ],
+    "destination_title": "Mount Afadjato",
+    "region": "Volta Region"
+  },
+  {
+    "id": 72,
+    "destination_id": 58,
+    "name": "Tafi Atome Community Eco-Camp",
+    "description": "Village guesthouse hosted by monkey sanctuary committee.",
+    "price_per_night": 20.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 555 7766",
+    "contact_email": "tafiatomeeco@gmail.com",
+    "image": "tafi_ecocamp.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Tafi%20Atome%20Community%20Eco-Camp.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Tafi%20Atome%20Community%20Eco-Camp.jpg",
+      "sources/images/all_tourist_sites/Hotels/Tafi%20Atome%20Community%20Eco-Camp%20-1.jpg"
+    ],
+    "destination_title": "Tafi Atome Monkey Sanctuary",
+    "region": "Volta Region"
+  },
+  {
+    "id": 73,
+    "destination_id": 59,
+    "name": "Avatime Mountain Lodge Amedzofe",
+    "description": "High altitude mountain lodge with cool weather vistas.",
+    "price_per_night": 50.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 444 5511",
+    "contact_email": "avatimelodge@gmail.com",
+    "image": "avatime_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Avatime%20Mountain%20Lodge%20Amedzofe.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Avatime%20Mountain%20Lodge%20Amedzofe.jpg",
+      "sources/images/all_tourist_sites/Hotels/Avatime%20Mountain%20Lodge%20Amedzofe%20-1.jpg"
+    ],
+    "destination_title": "Amedzofe Village",
+    "region": "Volta Region"
+  },
+  {
+    "id": 74,
+    "destination_id": 60,
+    "name": "Meet Me There African Home Lodge",
+    "description": "Eco-lodge on the Keta sandbar between sea and lagoon.",
+    "price_per_night": 45.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 333 1100",
+    "contact_email": "meetmethere@gmail.com",
+    "image": "meet_me_there.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Meet%20Me%20There%20African%20Home%20Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Meet%20Me%20There%20African%20Home%20Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Meet%20Me%20There%20African%20Home%20Lodge%20-1.jpg"
+    ],
+    "destination_title": "Keta Lagoon and Fort Prinzenstein",
+    "region": "Volta Region"
+  },
+  {
+    "id": 75,
+    "destination_id": 60,
+    "name": "Keta Beach Hotel",
+    "description": "Oceanfront hotel on historic Keta coastline.",
+    "price_per_night": 40.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 36 209 1122",
+    "contact_email": "ketabeachhotel@gmail.com",
+    "image": "keta_beach_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Keta%20Beach%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Keta%20Beach%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Keta%20Beach%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Keta Lagoon and Fort Prinzenstein",
+    "region": "Volta Region"
+  },
+  {
+    "id": 76,
+    "destination_id": 64,
+    "name": "Peduase Valley Resort Aburi",
+    "description": "4-star luxury resort nestled in Akwapim hills.",
+    "price_per_night": 150.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 274 0200",
+    "contact_email": "info@peduasevalleyresort.com",
+    "image": "peduase_valley.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Peduase%20Valley%20Resort%20Aburi.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Peduase%20Valley%20Resort%20Aburi.jpg",
+      "sources/images/all_tourist_sites/Hotels/Peduase%20Valley%20Resort%20Aburi%20-1.jpg"
+    ],
+    "destination_title": "Aburi Botanical Gardens",
+    "region": "Eastern Region"
+  },
+  {
+    "id": 77,
+    "destination_id": 64,
+    "name": "The Hill View Hotel Aburi",
+    "description": "Boutique hill hotel near Aburi Botanical Gardens.",
+    "price_per_night": 65.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 290 8877",
+    "contact_email": "hillviewaburi@gmail.com",
+    "image": "hill_view_aburi.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/The%20Hill%20View%20Hotel%20Aburi.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/The%20Hill%20View%20Hotel%20Aburi.jpg",
+      "sources/images/all_tourist_sites/Hotels/The%20Hill%20View%20Hotel%20Aburi%20-1.jpg"
+    ],
+    "destination_title": "Aburi Botanical Gardens",
+    "region": "Eastern Region"
+  },
+  {
+    "id": 78,
+    "destination_id": 65,
+    "name": "Mac-Dic Royal Plaza Koforidua",
+    "description": "Luxury resort with large pool near Boti Falls.",
+    "price_per_night": 85.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 34 202 8899",
+    "contact_email": "macdicroyal@gmail.com",
+    "image": "macdic_royal.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Mac-Dic%20Royal%20Plaza%20Koforidua.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Mac-Dic%20Royal%20Plaza%20Koforidua.jpg",
+      "sources/images/all_tourist_sites/Hotels/Mac-Dic%20Royal%20Plaza%20Koforidua%20-1.jpg"
+    ],
+    "destination_title": "Boti Waterfalls",
+    "region": "Eastern Region"
+  },
+  {
+    "id": 79,
+    "destination_id": 71,
+    "name": "The Royal Senchi Resort Akosombo",
+    "description": "Luxury 4-star riverfront resort on Lake Volta.",
+    "price_per_night": 210.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 340 9180",
+    "contact_email": "info@theroyalsenchi.com",
+    "image": "royal_senchi.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/The%20Royal%20Senchi%20Resort%20Akosombo.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/The%20Royal%20Senchi%20Resort%20Akosombo.jpg",
+      "sources/images/all_tourist_sites/Hotels/The%20Royal%20Senchi%20Resort%20Akosombo%20-1.jpg"
+    ],
+    "destination_title": "Akosombo Dam & Lake Volta",
+    "region": "Eastern Region"
+  },
+  {
+    "id": 80,
+    "destination_id": 71,
+    "name": "Voltariana Hotel Akosombo",
+    "description": "Scenic hilltop hotel overlooking Akosombo Dam.",
+    "price_per_night": 70.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 221 8200",
+    "contact_email": "voltarianahotel@gmail.com",
+    "image": "voltariana_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Voltariana%20Hotel%20Akosombo.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Voltariana%20Hotel%20Akosombo.jpg",
+      "sources/images/all_tourist_sites/Hotels/Voltariana%20Hotel%20Akosombo%20-1.jpg"
+    ],
+    "destination_title": "Akosombo Dam & Lake Volta",
+    "region": "Eastern Region"
+  },
+  {
+    "id": 81,
+    "destination_id": 72,
+    "name": "Safari Valley Luxury Cabins",
+    "description": "On-site eco-park cabins at Safari Valley Resort.",
+    "price_per_night": 170.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 30 290 9900",
+    "contact_email": "cabins@safarivalleyresort.com",
+    "image": "safari_valley_cabins.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Safari%20Valley%20Luxury%20Cabins.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Safari%20Valley%20Luxury%20Cabins.jpg",
+      "sources/images/all_tourist_sites/Hotels/Safari%20Valley%20Luxury%20Cabins%20-1.jpg"
+    ],
+    "destination_title": "Safari Valley Resort",
+    "region": "Eastern Region"
+  },
+  {
+    "id": 82,
+    "destination_id": 75,
+    "name": "Bridgeview Resort Atimpoku",
+    "description": "Luxury cliffside resort overlooking Adomi Bridge on Volta River.",
+    "price_per_night": 180.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 20 000 7788",
+    "contact_email": "info@bridgeviewgh.com",
+    "image": "bridgeview_resort.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Bridgeview%20Resort%20Atimpoku.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Bridgeview%20Resort%20Atimpoku.jpg",
+      "sources/images/all_tourist_sites/Hotels/Bridgeview%20Resort%20Atimpoku%20-1.jpg"
+    ],
+    "destination_title": "Sajuna Beach Club",
+    "region": "Eastern Region"
+  },
+  {
+    "id": 83,
+    "destination_id": 76,
+    "name": "Kubs Lodge Paga",
+    "description": "Friendly lodge near sacred Paga crocodile pond.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 38 209 8899",
+    "contact_email": "kubslodge@gmail.com",
+    "image": "kubs_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Kubs%20Lodge%20Paga.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Kubs%20Lodge%20Paga.jpg",
+      "sources/images/all_tourist_sites/Hotels/Kubs%20Lodge%20Paga%20-1.jpg"
+    ],
+    "destination_title": "Paga Crocodile Pond",
+    "region": "Upper East Region"
+  },
+  {
+    "id": 84,
+    "destination_id": 77,
+    "name": "Oasis Hotel Bolgatanga",
+    "description": "Premier hotel in Bolgatanga near Tongo Hills.",
+    "price_per_night": 45.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 38 202 2233",
+    "contact_email": "oasishotelbolga@gmail.com",
+    "image": "oasis_bolga.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Oasis%20Hotel%20Bolgatanga.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Oasis%20Hotel%20Bolgatanga.jpg",
+      "sources/images/all_tourist_sites/Hotels/Oasis%20Hotel%20Bolgatanga%20-1.jpg"
+    ],
+    "destination_title": "Tongo Hills and Tengzug Shrine",
+    "region": "Upper East Region"
+  },
+  {
+    "id": 85,
+    "destination_id": 78,
+    "name": "SWOPA Guest Rooms Sirigu",
+    "description": "Authentic traditional mud-wall decorated rooms in Sirigu village.",
+    "price_per_night": 25.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 333 4411",
+    "contact_email": "swopasirigu@gmail.com",
+    "image": "swopa_rooms.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/SWOPA%20Guest%20Rooms%20Sirigu.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/SWOPA%20Guest%20Rooms%20Sirigu.jpg",
+      "sources/images/all_tourist_sites/Hotels/SWOPA%20Guest%20Rooms%20Sirigu%20-1.jpg"
+    ],
+    "destination_title": "Sirigu Pottery and Art Village",
+    "region": "Upper East Region"
+  },
+  {
+    "id": 86,
+    "destination_id": 81,
+    "name": "Uplands Hotel Wa",
+    "description": "Top hotel in Wa town near Wa Naa Palace.",
+    "price_per_night": 50.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 39 202 2211",
+    "contact_email": "uplandshotelwa@gmail.com",
+    "image": "uplands_wa.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Uplands%20Hotel%20Wa.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Uplands%20Hotel%20Wa.jpg",
+      "sources/images/all_tourist_sites/Hotels/Uplands%20Hotel%20Wa%20-1.jpg"
+    ],
+    "destination_title": "Wa Naa's Palace",
+    "region": "Upper West Region"
+  },
+  {
+    "id": 87,
+    "destination_id": 83,
+    "name": "Wechiau Hippo Sanctuary Eco-Lodge",
+    "description": "Traditional mud-thatch eco-rooms beside Black Volta River.",
+    "price_per_night": 25.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 555 9900",
+    "contact_email": "wechiauhippo@gmail.com",
+    "image": "wechiau_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Wechiau%20Hippo%20Sanctuary%20Eco-Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Wechiau%20Hippo%20Sanctuary%20Eco-Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Wechiau%20Hippo%20Sanctuary%20Eco-Lodge%20-1.jpg"
+    ],
+    "destination_title": "Wechiau Hippo Sanctuary",
+    "region": "Upper West Region"
+  },
+  {
+    "id": 88,
+    "destination_id": 85,
+    "name": "Boabeng-Fiema Community Guest House",
+    "description": "On-site guesthouse inside the sacred monkey sanctuary.",
+    "price_per_night": 20.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 111 5544",
+    "contact_email": "boabengfiemaeco@gmail.com",
+    "image": "boabeng_guesthouse.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Boabeng-Fiema%20Community%20Guest%20House.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Boabeng-Fiema%20Community%20Guest%20House.jpg",
+      "sources/images/all_tourist_sites/Hotels/Boabeng-Fiema%20Community%20Guest%20House%20-1.jpg"
+    ],
+    "destination_title": "Boabeng-Fiema Monkey Sanctuary",
+    "region": "Bono East Region"
+  },
+  {
+    "id": 89,
+    "destination_id": 86,
+    "name": "Kintampo Falls Hotel",
+    "description": "Comfortable hotel near Kintampo Waterfalls.",
+    "price_per_night": 40.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 35 209 2211",
+    "contact_email": "kintampofallshotel@gmail.com",
+    "image": "kintampo_hotel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Kintampo%20Falls%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Kintampo%20Falls%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Kintampo%20Falls%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Kintampo Waterfalls",
+    "region": "Bono East Region"
+  },
+  {
+    "id": 90,
+    "destination_id": 89,
+    "name": "Akomapa Guest House Techiman",
+    "description": "Quiet lodge near Tanoboase sacred grove.",
+    "price_per_night": 30.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 35 202 1100",
+    "contact_email": "akomapaguesthouse@gmail.com",
+    "image": "akomapa_guesthouse.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Akomapa%20Guest%20House%20Techiman.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Akomapa%20Guest%20House%20Techiman.jpg",
+      "sources/images/all_tourist_sites/Hotels/Akomapa%20Guest%20House%20Techiman%20-1.jpg"
+    ],
+    "destination_title": "Tanoboase Sacred Grove",
+    "region": "Bono Region"
+  },
+  {
+    "id": 91,
+    "destination_id": 91,
+    "name": "Mole Safari Motel",
+    "description": "Iconic motel inside Mole Park overlooking elephant waterhole.",
+    "price_per_night": 45.0,
+    "room_capacity": 3,
+    "contact_phone": "+233 24 437 2191",
+    "contact_email": "reservations@molesafarimotel.org",
+    "image": "mole_motel.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Mole%20Safari%20Motel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Mole%20Safari%20Motel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Mole%20Safari%20Motel%20-1.jpg"
+    ],
+    "destination_title": "Mole National Park",
+    "region": "Savannah Region"
+  },
+  {
+    "id": 92,
+    "destination_id": 91,
+    "name": "Zaina Lodge",
+    "description": "5-star luxury eco-lodge inside Mole National Park.",
+    "price_per_night": 250.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 243 6300",
+    "contact_email": "info@zainalodge.com",
+    "image": "zaina_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Zaina%20Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Zaina%20Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Zaina%20Lodge%20-1.jpg"
+    ],
+    "destination_title": "Mole National Park",
+    "region": "Savannah Region"
+  },
+  {
+    "id": 93,
+    "destination_id": 92,
+    "name": "Savannah Lodge Larabanga",
+    "description": "Traditional mud-brick lodge near 1421 ancient mosque.",
+    "price_per_night": 25.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 555 7788",
+    "contact_email": "savannahlodge@gmail.com",
+    "image": "savannah_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Savannah%20Lodge%20Larabanga.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Savannah%20Lodge%20Larabanga.jpg",
+      "sources/images/all_tourist_sites/Hotels/Savannah%20Lodge%20Larabanga%20-1.jpg"
+    ],
+    "destination_title": "Larabanga Mosque",
+    "region": "Savannah Region"
+  },
+  {
+    "id": 94,
+    "destination_id": 96,
+    "name": "Gambaga Rest Stop",
+    "description": "Guesthouse perched near Gambaga cliffside escarpment.",
+    "price_per_night": 25.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 333 7711",
+    "contact_email": "gambagarest@gmail.com",
+    "image": "gambaga_rest.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Gambaga%20Rest%20Stop.avif",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Gambaga%20Rest%20Stop.avif",
+      "sources/images/all_tourist_sites/Hotels/Gambaga%20Rest%20Stop%20-1.jpg"
+    ],
+    "destination_title": "Gambaga Escarpment",
+    "region": "North East Region"
+  },
+  {
+    "id": 95,
+    "destination_id": 98,
+    "name": "Kyabobo Park Guest House",
+    "description": "Park ranger guesthouse at Kyabobo mountain entrance.",
+    "price_per_night": 25.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 24 444 8822",
+    "contact_email": "kyaboboguesthouse@gmail.com",
+    "image": "kyabobo_guesthouse.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Kyabobo%20Park%20Guest%20House.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Kyabobo%20Park%20Guest%20House.jpg",
+      "sources/images/all_tourist_sites/Hotels/Kyabobo%20Park%20Guest%20House%20-1.jpg"
+    ],
+    "destination_title": "Kyabobo National Park",
+    "region": "Oti Region"
+  },
+  {
+    "id": 96,
+    "destination_id": 101,
+    "name": "Sefwi Wiawso Executive Lodge",
+    "description": "Executive lodge in Sefwi Wiawso.",
+    "price_per_night": 45.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 31 209 1100",
+    "contact_email": "sefwilodge@gmail.com",
+    "image": "sefwi_lodge.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Sefwi%20Wiawso%20Executive%20Lodge.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Sefwi%20Wiawso%20Executive%20Lodge.jpg",
+      "sources/images/all_tourist_sites/Hotels/Sefwi%20Wiawso%20Executive%20Lodge%20-1.jpg"
+    ],
+    "destination_title": "Anwhiaso Pedestalled Rock",
+    "region": "Western North Region"
+  },
+  {
+    "id": 97,
+    "destination_id": 104,
+    "name": "Goaso Oasis Hotel",
+    "description": "Comfortable hotel near Mim Rocks in Goaso.",
+    "price_per_night": 35.0,
+    "room_capacity": 2,
+    "contact_phone": "+233 35 209 4433",
+    "contact_email": "goasooasis@gmail.com",
+    "image": "goaso_oasis.jpg",
+    "created_at": "2026-08-01 17:59:52",
+    "image_url": "sources/images/all_tourist_sites/Hotels/Goaso%20Oasis%20Hotel.jpg",
+    "images": [
+      "sources/images/all_tourist_sites/Hotels/Goaso%20Oasis%20Hotel.jpg",
+      "sources/images/all_tourist_sites/Hotels/Goaso%20Oasis%20Hotel%20-1.jpg"
+    ],
+    "destination_title": "Mim Bour (Mim Rocks)",
+    "region": "Ahafo Region"
+  }
+]

@@ -1,0 +1,122 @@
+/* DigiTour Frontend extras — animations & static-hosting helpers */
+
+.dt-hero-fallback {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+  animation: dtKenBurns 18s ease-in-out infinite alternate;
+  z-index: 0;
+}
+.dt-hero-fallback.is-active {
+  opacity: 1;
+}
+
+@keyframes dtKenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+.dt-img-cycle {
+  background-size: cover !important;
+  background-position: center !important;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.dt-img-cycle.is-active {
+  opacity: 1;
+}
+
+.dt-section-videos .dt-section-video.dt-img-cycle {
+  object-fit: cover;
+}
+
+/* Soft hover lift for bento tiles */
+.bento-item {
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+}
+.bento-item:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+.dt-featured-card {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.dt-featured-card:hover {
+  transform: translateY(-4px);
+}
+
+.dt-step {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.dt-step:hover {
+  transform: translateY(-4px);
+}
+
+.dt-float-btn {
+  animation: dtPulseSoft 2.8s ease-in-out infinite;
+}
+@keyframes dtPulseSoft {
+  0%, 100% { box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+  50% { box-shadow: 0 8px 28px rgba(255,153,0,.35); }
+}
+
+.category-pill {
+  transition: transform .2s ease, background .2s ease;
+}
+.category-pill:hover {
+  transform: translateY(-2px);
+}
+
+/* Loading shimmer while JSON boots */
+body:not(.dt-ready) #destination-container:empty::after,
+body:not(.dt-ready) #hotel-container:empty::after {
+  content: 'Loading DigiTour catalogue…';
+  display: block;
+  padding: 2rem;
+  text-align: center;
+  color: #64748b;
+  grid-column: 1 / -1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dt-hero-fallback,
+  .dt-float-btn,
+  .bento-item,
+  .dt-featured-card,
+  .dt-step {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Landing sections: solid soft panels (no video compositing under scroll) */
+.section-shell {
+  position: relative;
+  z-index: 1;
+}
+
+body[data-page="index.html"] .section-soft {
+  background: rgba(255, 251, 245, 0.92);
+}
+
+body[data-page="index.html"] .section-warm {
+  background: rgba(255, 246, 230, 0.94);
+}
+
+body[data-page="index.html"] #destinations-grid {
+  background: rgba(255, 251, 245, 0.94);
+}
+
+/* Image banner cycle (destinations hero) */
+.dt-section-video.dt-img-cycle {
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
