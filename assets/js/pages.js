@@ -216,7 +216,7 @@
     const hotels = DT.hotelsForDest(dest.id);
     const reviews = DT.reviewsForDest(dest.id);
     const images = dest.images && dest.images.length ? dest.images : [dest.image_url];
-    const wa = (DT.meta && DT.meta.whatsapp) || 'https://wa.me/233549326089';
+    const wa = (DT.meta && DT.meta.whatsapp) || 'https://wa.me/233546004395';
 
     const hero = document.getElementById('detail-hero');
     if (hero) {
@@ -323,24 +323,18 @@
             id: 'r_' + Date.now(),
             destination_id: dest.id,
             dest_title: dest.title,
+            name: (user && user.name) || 'Guest',
             full_name: (user && user.name) || 'Guest',
+            email: (user && user.email) || '',
             rating,
             comment,
-            status: 'Pending',
+            status: 'approved',
             created_at: new Date().toISOString(),
           };
           if (window.DigiStorage) {
-            DigiStorage.saveReview(review);
-            await DigiStorage.submitNetlifyForm('review', {
-              destination_id: dest.id,
-              destination: dest.title,
-              name: review.full_name,
-              email: (user && user.email) || '',
-              rating,
-              comment,
-            });
+            await DigiStorage.saveReview(review);
           }
-          DT.toast('<i class="fa-solid fa-check-circle me-1"></i> Thank you! Review saved on this device and sent for admin approval.', 'success');
+          DT.toast('<i class="fa-solid fa-check-circle me-1"></i> Review saved (+15 loyalty points).', 'success');
           rf.reset();
         });
       }
@@ -379,12 +373,15 @@
           <a href="inquiry.html?site=${encodeURIComponent(dest.title)}" class="btn btn-digitour-outline py-2 fw-bold"><i class="fa-solid fa-paper-plane me-2"></i> Ask Admin a Question</a>
         </div>
         <div class="dt-share-bar mb-3">
-          <a class="btn btn-sm btn-success" target="_blank" rel="noopener" href="https://wa.me/?text=${shareText}%20${shareUrl}"><i class="fab fa-whatsapp me-1"></i> Share</a>
-          <a class="btn btn-sm btn-primary" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}"><i class="fab fa-facebook-f me-1"></i> Share</a>
+          <a class="btn btn-sm btn-success" target="_blank" rel="noopener" href="https://wa.me/?text=${shareText}%20${shareUrl}"><i class="fab fa-whatsapp me-1"></i> WhatsApp</a>
+          <a class="btn btn-sm btn-primary" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}"><i class="fab fa-facebook-f me-1"></i> Facebook</a>
           <button type="button" class="btn btn-sm btn-outline-dark" id="dtCopyLink"><i class="fa-solid fa-link me-1"></i> Copy link</button>
         </div>
+        <button type="button" class="btn btn-digitour-outline w-100 mb-3" id="dtAddItinerary">
+          <i class="fa-solid fa-suitcase-rolling me-1"></i> Add to offline itinerary
+        </button>
         <div class="p-3 rounded-3 bg-light text-center border">
-          <small class="text-secondary d-block"><i class="fa-solid fa-shield-halved me-1 text-success"></i> National DigiTour catalogue · Instant hotel booking demo</small>
+          <small class="text-secondary d-block"><i class="fa-solid fa-shield-halved me-1 text-success"></i> National DigiTour catalogue · Instant hotel booking</small>
         </div>`;
       const copyBtn = document.getElementById('dtCopyLink');
       if (copyBtn) {
@@ -395,6 +392,19 @@
           } catch (_) {
             DT.toast('Could not copy link.', 'danger');
           }
+        });
+      }
+      const itinBtn = document.getElementById('dtAddItinerary');
+      if (itinBtn && window.DigiStorage) {
+        itinBtn.addEventListener('click', () => {
+          DigiStorage.addToItinerary({
+            type: 'destination',
+            id: dest.id,
+            title: dest.title,
+            region: dest.region,
+            url: (DT.meta.site_url || location.origin) + '/destination-detail.html?id=' + dest.id,
+          });
+          DT.toast('Added to offline itinerary. Download it from your Dashboard.', 'success');
         });
       }
     }
@@ -540,8 +550,12 @@
               <div class="d-flex justify-content-between border-top pt-2"><span class="fw-bold">Total</span><strong class="text-success fs-5" id="total_price_calc" data-price-usd="${hotel.price_per_night * 2}">${DT.formatCurrency(hotel.price_per_night * 2)}</strong></div>
             </div>
             <button type="submit" class="btn btn-digitour-gold w-100 mt-4 fw-bold py-2"><i class="fa-solid fa-lock me-2"></i> Confirm Reservation</button>
-            <p class="small text-secondary text-center mt-3 mb-0">Static demo — booking is saved in your browser only.</p>
+            <p class="small text-secondary text-center mt-3 mb-0">Booking is saved via DigiTour Functions (bookings.json) + this device. +50 loyalty points.</p>
           </form>
+        </div>
+        <div class="dt-share-bar mt-3 justify-content-center">
+          <a class="btn btn-sm btn-success" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent('Check out ' + hotel.name + ' on DigiTour Ghana ' + (DT.meta.site_url || location.origin) + '/book-hotel.html?hotel_id=' + hotel.id)}"><i class="fab fa-whatsapp me-1"></i> WhatsApp</a>
+          <a class="btn btn-sm btn-primary" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent((DT.meta.site_url || location.origin) + '/book-hotel.html?hotel_id=' + hotel.id)}"><i class="fab fa-facebook-f me-1"></i> Facebook</a>
         </div>`;
     }
 
@@ -574,39 +588,36 @@
         const fd = new FormData(form);
         const nights = parseInt(document.getElementById('total_nights').textContent, 10) || 1;
         const booking = {
-          id: Date.now(),
+          id: 'bk_' + Date.now(),
           hotel_id: hotel.id,
+          hotel: hotel.name,
           hotel_name: hotel.name,
+          destination: hotel.destination_title,
           destination_title: hotel.destination_title,
+          check_in: fd.get('check_in'),
+          check_out: fd.get('check_out'),
           check_in_date: fd.get('check_in'),
           check_out_date: fd.get('check_out'),
+          guests: parseInt(fd.get('guests'), 10) || 1,
           guests_count: parseInt(fd.get('guests'), 10) || 1,
+          total_usd: nights * hotel.price_per_night,
           total_price: nights * hotel.price_per_night,
           status: 'Pending',
+          guest_name: (DT.getUser() || {}).name || 'Guest',
+          guest_email: (DT.getUser() || {}).email || '',
           user_name: (DT.getUser() || {}).name || 'Guest',
           user_email: (DT.getUser() || {}).email || '',
           confirmation_code: 'DT-' + String(Date.now()).slice(-8),
         };
         if (window.DigiStorage) {
-          DigiStorage.saveBooking(booking);
-          await DigiStorage.submitNetlifyForm('booking', {
-            confirmation_code: booking.confirmation_code,
-            hotel: booking.hotel_name,
-            destination: booking.destination_title,
-            check_in: booking.check_in_date,
-            check_out: booking.check_out_date,
-            guests: booking.guests_count,
-            total_usd: booking.total_price,
-            guest_name: booking.user_name,
-            guest_email: booking.user_email,
-          });
+          await DigiStorage.saveBooking(booking);
         } else {
           const stored = JSON.parse(localStorage.getItem('dt_bookings') || '[]');
           stored.unshift(booking);
           localStorage.setItem('dt_bookings', JSON.stringify(stored));
         }
         sessionStorage.setItem('dt_last_booking', JSON.stringify(booking));
-        window.location.href = 'dashboard.html?msg=' + encodeURIComponent('Reservation confirmed (Pending). Code: ' + booking.confirmation_code);
+        window.location.href = 'dashboard.html?msg=' + encodeURIComponent('Reservation confirmed. +50 points. Code: ' + booking.confirmation_code);
       });
     }
   }
@@ -673,16 +684,19 @@
     }
     const form = document.getElementById('login-form');
     if (form) {
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = form.email.value.trim().toLowerCase();
         const password = form.password.value;
-        const auth = window.DigiStorage
-          ? DigiStorage.authenticate(email, password)
-          : null;
         const err = document.getElementById('login-error');
+        let auth = null;
+        try {
+          auth = window.DigiStorage ? await DigiStorage.authenticate(email, password) : null;
+        } catch (_) {
+          auth = null;
+        }
         if (!auth) {
-          if (err) err.innerHTML = `<div class="alert alert-danger"><i class="fa-solid fa-triangle-exclamation me-1"></i> Invalid email or password. Try kwame@example.com / demo123 or register a new account.</div>`;
+          if (err) err.innerHTML = `<div class="alert alert-danger"><i class="fa-solid fa-triangle-exclamation me-1"></i> Invalid email or password. Try kwame@example.com / demo123 or register.</div>`;
           return;
         }
         DT.setUser(auth);
@@ -710,12 +724,16 @@
         const password = form.password.value;
         try {
           if (!window.DigiStorage) throw new Error('Storage module missing.');
-          const user = DigiStorage.registerUser({ name, email, phone, password });
-          await DigiStorage.submitNetlifyForm('registration', {
-            name, email, phone, created_at: user.created_at,
+          const user = await DigiStorage.registerUser({ name, email, phone, password });
+          DT.setUser({
+            name: user.name,
+            email: user.email,
+            phone: user.phone,
+            role: user.role,
+            id: user.id,
+            points: user.points || 25,
           });
-          DT.setUser({ name: user.name, email: user.email, phone: user.phone, role: user.role, id: user.id });
-          window.location.href = 'dashboard.html?msg=' + encodeURIComponent('Welcome to DigiTour! Your account is saved on this device and notified to admin.');
+          window.location.href = 'dashboard.html?msg=' + encodeURIComponent('Welcome! +25 loyalty points. Account saved.');
         } catch (err) {
           DT.toast(err.message || 'Registration failed.', 'danger');
         }
@@ -737,6 +755,31 @@
     }
     document.getElementById('dash-name') && (document.getElementById('dash-name').textContent = user.name);
     document.getElementById('dash-email') && (document.getElementById('dash-email').textContent = user.email);
+
+    const pointsEl = document.getElementById('dash-points');
+    if (pointsEl) pointsEl.textContent = String(user.points != null ? user.points : 0);
+
+    const itinBox = document.getElementById('dash-itinerary');
+    if (itinBox && window.DigiStorage) {
+      const items = DigiStorage.getItinerary();
+      itinBox.innerHTML = `
+        <div class="auth-card mb-4">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <h5 class="fw-bold mb-0"><i class="fa-solid fa-route me-2 text-warning"></i> Offline itinerary</h5>
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-sm btn-digitour-gold" id="dtDownloadItinerary"><i class="fa-solid fa-download me-1"></i> Download .txt</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="dtClearItinerary">Clear</button>
+            </div>
+          </div>
+          <p class="small text-secondary">Loyalty points: <strong>${user.points != null ? user.points : 0}</strong> · Refer a friend via WhatsApp share for more visits.</p>
+          ${items.length ? `<ul class="mb-0">${items.map((it) => `<li><strong>${DT.esc(it.title)}</strong> <span class="text-secondary">(${DT.esc(it.type)})</span></li>`).join('')}</ul>` : '<p class="mb-0 text-secondary small">No stops yet — open a destination and tap “Add to offline itinerary”.</p>'}
+        </div>`;
+      document.getElementById('dtDownloadItinerary')?.addEventListener('click', () => DigiStorage.downloadItineraryText());
+      document.getElementById('dtClearItinerary')?.addEventListener('click', () => {
+        DigiStorage.clearItinerary();
+        bootDashboard();
+      });
+    }
 
     const localBookings = window.DigiStorage
       ? DigiStorage.getLocalBookings()
@@ -832,6 +875,7 @@
     // Re-init effects after dynamic content
     setTimeout(() => {
       document.dispatchEvent(new Event('dt:content-ready'));
+      if (window.DigiTranslate) DigiTranslate.syncButtons();
     }, 50);
   });
 })();

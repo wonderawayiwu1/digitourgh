@@ -1,0 +1,14 @@
+[
+  {
+    "id": "u_demo_kwame",
+    "name": "Kwame Asante",
+    "email": "kwame@example.com",
+    "phone": "0546004395",
+    "role": "tourist",
+    "points": 120,
+    "salt": "demo_salt_digitour",
+    "password_hash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    "created_at": "2026-01-01T00:00:00.000Z",
+    "note": "Demo account password is demo123 — hash above is SHA-256 of password+salt for bootstrap; auth.js re-seeds if missing."
+  }
+]

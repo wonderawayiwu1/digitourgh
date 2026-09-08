@@ -18,8 +18,8 @@ Demo logins still work: `kwame@example.com` / `demo123`.
 
 ## What’s included
 
-- 105 destinations · 97 hotels · interactive **Map** (`map.html`)
-- DigiGuide chatbot (catalogue + web fallback)
+- 122 destinations · 97 hotels · interactive **Map** (`map.html`)
+- DigiGuide chatbot (Google-first search, then live DigiTour RAG catalogue)
 - SEO: `robots.txt`, `sitemap.xml`, Open Graph, JSON-LD, canonical URLs
 - PWA shell (`site.webmanifest` + `sw.js`) for basic offline access
 - Share buttons, related destinations, booking QR ticket
@@ -29,8 +29,9 @@ Demo logins still work: `kwame@example.com` / `demo123`.
 ## DigiGuide (chat)
 
 1. Set `GROQ_API_KEY` in Netlify → Environment variables  
-2. Or keep it in local `.env` (gitignored)  
-3. Local chat: `node server.js` or `netlify dev`
+2. Optional Google keys for first-pass web search: `GOOGLE_API_KEY` + `GOOGLE_CSE_ID`, or `SERPER_API_KEY`  
+3. Or keep keys in local `.env` (gitignored)  
+4. Local chat: `node server.js` or `netlify dev` — DigiGuide rebuilds from current `data/*.json` on each function cold start
 
 ## Deploy
 

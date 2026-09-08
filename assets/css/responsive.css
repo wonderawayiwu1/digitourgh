@@ -1,0 +1,318 @@
+/* DigiTour — site-wide responsive polish (all devices) */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: clip;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+a.btn,
+.btn,
+.category-pill,
+.dt-nav-link,
+.dt-menu-btn,
+.dt-float-btn,
+.dt-chat-fab,
+.dt-help-option,
+.dt-map-tool-btn,
+.dt-map-fab,
+.dt-sheet-handle {
+  touch-action: manipulation;
+}
+
+/* Prevent horizontal page scroll from wide children */
+.container,
+.container-fluid,
+.container-xxl,
+.row {
+  max-width: 100%;
+}
+
+.section-shell {
+  overflow-x: clip;
+}
+
+/* Category pill strip — scroll instead of wrap overflow */
+.dt-category-scroll {
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 0.25rem;
+  justify-content: flex-start !important;
+}
+
+.category-pill {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* Search / filter panels */
+.dt-search-panel .row > [class*="col"] {
+  min-width: 0;
+}
+
+.dt-badge {
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+/* Bento / cards grid safety */
+.bento-grid,
+#destination-container,
+#hotel-container,
+#nearby-hotels-grid,
+.dt-related-strip {
+  min-width: 0;
+}
+
+/* Detail page sticky nav */
+.dt-article-nav {
+  max-width: 100%;
+}
+
+/* Auth */
+.auth-shell {
+  padding-left: max(0px, env(safe-area-inset-left));
+  padding-right: max(0px, env(safe-area-inset-right));
+}
+
+.auth-card code {
+  word-break: break-all;
+}
+
+/* Dashboard cards */
+#dash-bookings .table-responsive,
+#dash-reviews .table-responsive {
+  margin: 0 -0.25rem;
+}
+
+#dash-bookings .card,
+#dash-reviews .card,
+.card {
+  max-width: 100%;
+}
+
+/* Booking page */
+.page-header {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.page-header-inner {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+/* Footer */
+.footer-digitour .row > [class*="col"] {
+  min-width: 0;
+}
+
+.footer-digitour a {
+  word-break: break-word;
+}
+
+/* Chat + help FABs — keep clear of edges on small screens */
+@media (max-width: 768px) {
+  .dt-chat-fab {
+    right: max(0.75rem, env(safe-area-inset-right)) !important;
+  }
+
+  .dt-help-float {
+    left: max(0.75rem, env(safe-area-inset-left)) !important;
+  }
+
+  .dt-chat-panel {
+    width: min(100vw - 1.25rem, 400px) !important;
+    max-height: min(72vh, 560px);
+    right: max(0.5rem, env(safe-area-inset-right)) !important;
+    left: auto !important;
+  }
+
+  .section-title {
+    font-size: clamp(1.35rem, 5.5vw, 1.85rem);
+  }
+
+  .section-lead {
+    font-size: 0.95rem;
+  }
+
+  .dt-step {
+    padding: 1.15rem;
+  }
+
+  .auth-shell {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .auth-card .card-body {
+    padding: 1.15rem !important;
+  }
+
+  main.section-shell .container,
+  main .container-xxl > .container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  .dt-page-hero-title {
+    font-size: clamp(1.55rem, 7vw, 2.25rem);
+    line-height: 1.15;
+  }
+
+  .detail-hero {
+    min-height: 220px;
+  }
+
+  .dt-sidebar-sticky {
+    position: static !important;
+  }
+
+  .dt-article-nav {
+    top: 58px;
+    gap: 0.35rem;
+  }
+
+  .dt-article-nav .btn {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.55rem;
+  }
+
+  /* Booking form columns */
+  .row.g-5 {
+    --bs-gutter-y: 1.75rem;
+  }
+
+  /* Tables in dashboard / booking */
+  .table td,
+  .table th {
+    white-space: nowrap;
+  }
+
+  .table td.text-wrap,
+  .table td:first-child {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .dt-search-float {
+    margin-top: -1.5rem;
+  }
+
+  .dt-search-panel {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .dt-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.65rem;
+  }
+
+  .bento-item,
+  .dt-featured-card {
+    border-radius: 16px;
+  }
+
+  .dt-hero-progress {
+    margin-top: 0.75rem;
+  }
+
+  .footer-digitour {
+    padding: 2.25rem 0 5.5rem; /* room for FABs */
+    text-align: left;
+  }
+
+  .footer-digitour .col-md-4,
+  .footer-digitour .col-lg-3,
+  .footer-digitour .col-lg-4 {
+    margin-bottom: 1.25rem;
+  }
+
+  #dash-bookings .d-flex,
+  #dash-reviews .d-flex {
+    flex-wrap: wrap;
+  }
+
+  .btn-group {
+    flex-wrap: wrap;
+  }
+
+  /* Inquiry / forms */
+  textarea.form-control {
+    min-height: 120px;
+  }
+
+  .dt-loyalty-chip {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 404 / stacked CTAs */
+  .min-vh-100 .btn + .btn {
+    margin-left: 0 !important;
+    margin-top: 0.5rem;
+  }
+
+  .min-vh-100 .btn {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .dt-brand {
+    font-size: 1.15rem !important;
+  }
+
+  .category-pill {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .dt-chat-panel {
+    max-height: 68vh;
+  }
+}
+
+/* Landscape phones — keep map usable */
+@media (max-width: 900px) and (orientation: landscape) {
+  body.dt-map-page .dt-map-panel.dt-map-sheet {
+    height: 28vh;
+    max-height: 28vh;
+  }
+
+  body.dt-map-page .dt-map-panel.dt-map-sheet.is-expanded {
+    height: 72vh;
+    max-height: 72vh;
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .dt-map-panel.dt-map-sheet,
+  .dt-map-fab-menu {
+    transition: none !important;
+  }
+}

@@ -1,6 +1,6 @@
 [build]
   publish = "."
-  command = "echo DigiTour static site ready"
+  command = "npm install"
   functions = "netlify/functions"
 
 [functions]

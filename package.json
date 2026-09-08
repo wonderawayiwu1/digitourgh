@@ -1,0 +1,8 @@
+{
+  "name": "digitour-ghana",
+  "private": true,
+  "description": "DigiTour Ghana — static Netlify site with serverless JSON APIs",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

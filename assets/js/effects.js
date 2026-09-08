@@ -448,20 +448,69 @@
     });
   }
 
+  function initFeaturedCarousel() {
+    const strip = document.getElementById('featured-strip');
+    if (!strip || strip.dataset.marqueeBound === '1') return;
+    const cards = Array.from(strip.children);
+    if (cards.length < 2) return;
+    strip.dataset.marqueeBound = '1';
+
+    // Duplicate for seamless loop
+    cards.forEach((c) => strip.appendChild(c.cloneNode(true)));
+
+    let paused = false;
+    let raf = 0;
+    const speed = 0.45; // px per frame
+
+    const tick = () => {
+      if (!paused) {
+        strip.scrollLeft += speed;
+        const half = strip.scrollWidth / 2;
+        if (strip.scrollLeft >= half) strip.scrollLeft -= half;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    const pause = () => { paused = true; };
+    const resume = () => { paused = false; };
+    strip.addEventListener('mouseenter', pause);
+    strip.addEventListener('mouseleave', resume);
+    strip.addEventListener('touchstart', pause, { passive: true });
+    strip.addEventListener('touchend', resume, { passive: true });
+    strip.addEventListener('pointerdown', pause);
+    strip.addEventListener('pointerup', resume);
+    strip.addEventListener('wheel', pause, { passive: true });
+  }
+
   function initOrbitPause() {
     const wrap = $('.dt-orbit-wrap');
     const track = $('#dtOrbitTrack');
     if (!wrap || !track) return;
-    if (!('IntersectionObserver' in window)) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          track.style.animationPlayState = entry.isIntersecting && !document.hidden ? 'running' : 'paused';
-        });
-      },
-      { threshold: 0.05 }
-    );
-    io.observe(wrap);
+
+    const pause = () => { track.style.animationPlayState = 'paused'; };
+    const resume = () => {
+      if (!document.hidden) track.style.animationPlayState = 'running';
+    };
+    wrap.addEventListener('mouseenter', pause);
+    wrap.addEventListener('mouseleave', resume);
+    wrap.addEventListener('touchstart', pause, { passive: true });
+    wrap.addEventListener('touchend', resume, { passive: true });
+    wrap.addEventListener('pointerdown', pause);
+    wrap.addEventListener('pointerup', resume);
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            track.style.animationPlayState =
+              entry.isIntersecting && !document.hidden && !wrap.matches(':hover') ? 'running' : 'paused';
+          });
+        },
+        { threshold: 0.05 }
+      );
+      io.observe(wrap);
+    }
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) track.style.animationPlayState = 'paused';
     });
@@ -566,6 +615,7 @@
     initHeroVideos();
     initSectionVideos();
     initOrbitPause();
+    initFeaturedCarousel();
     initBackTop();
     initBookingCalc();
     initDetailGallery();
@@ -581,6 +631,7 @@
     initHeroVideos();
     initSectionVideos();
     initOrbitPause();
+    initFeaturedCarousel();
     initDetailGallery();
     initFilter();
   });

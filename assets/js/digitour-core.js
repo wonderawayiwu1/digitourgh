@@ -114,8 +114,8 @@
   DT.ready = (async function loadAll() {
     const base = 'data/';
     const [meta, destinations, hotels, reviews, bookings] = await Promise.all([
-      loadJSON(base + 'meta.json'),
-      loadJSON(base + 'destinations.json'),
+      loadJSON(base + 'meta.json?v=cat122'),
+      loadJSON(base + 'destinations.json?v=cat122'),
       loadJSON(base + 'hotels.json'),
       loadJSON(base + 'reviews.json'),
       loadJSON(base + 'bookings.json'),
@@ -285,11 +285,13 @@
     const opts = options || {};
     const active = opts.active || pageName();
     const isHome = active === 'index.html' || active === '' || active === '/';
+    const isMap = active === 'map.html';
     const user = getUser();
     const meta = DT.meta || {};
-    const wa = meta.whatsapp || 'https://wa.me/233549326089';
-    const tel = meta.tel || 'tel:+233549326089';
-    const phone = meta.phone_local || '0549326089';
+    const wa = meta.whatsapp || 'https://wa.me/233546004395';
+    const tel = meta.tel || 'tel:+233546004395';
+    const phone = meta.phone_local || '0546004395';
+    const t = (window.DigiI18n && DigiI18n.t) || ((k) => k);
 
     const bg = (meta.page_bg && meta.page_bg.length) ? meta.page_bg : [
       'sources/images/all_tourist_sites/Kakum%20National%20Park%20Canopy%20Walkway.jpg',
@@ -297,8 +299,10 @@
       'sources/images/all_tourist_sites/Wli%20Waterfalls.jpg',
       'sources/images/all_tourist_sites/Mole%20National%20Park.jpg',
     ];
-    // Single static wash image — avoids multi-layer opacity thrash while scrolling
-    const bgLayers = `<div class="dt-page-bg-layer is-active" style="background-image:url('${bg[0]}')"></div>`;
+    // Map page: no photo wash — it made the MapTiler canvas look faded/glassy
+    const bgLayers = isMap
+      ? ''
+      : `<div class="dt-page-bg-layer is-active" style="background-image:url('${bg[0]}')"></div>`;
 
     // Ensure favicon matches PHP
     let fav = document.querySelector('link[rel="icon"]');
@@ -311,30 +315,29 @@
     fav.href = 'sources/images/logo-svg/logo-outline-white.svg';
 
     const topAuth = user
-      ? `<span class="me-3"><i class="fa-solid fa-user me-1" style="color:#FEBD69"></i> Welcome, <strong>${esc(user.name)}</strong></span>
-         <a href="dashboard.html" class="me-2"><i class="fa-solid fa-gauge me-1"></i> My Dashboard</a>
-         <a href="#" class="text-danger fw-bold" data-logout><i class="fa-solid fa-right-from-bracket me-1"></i> Logout</a>`
-      : `<a href="login.html" class="me-3"><i class="fa-solid fa-right-to-bracket me-1"></i> Login</a>
-         <a href="register.html" class="btn btn-sm btn-digitour-gold py-1 px-3"><i class="fa-solid fa-user-plus me-1"></i> Sign Up</a>`;
+      ? `<a class="dt-pill-btn dt-pill-ghost" href="dashboard.html"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></a>
+         <a class="dt-pill-btn dt-pill-danger" href="#" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>`
+      : `<a class="dt-pill-btn dt-pill-ghost" href="login.html"><i class="fa-solid fa-right-to-bracket"></i><span>Login</span></a>
+         <a class="dt-pill-btn dt-pill-gold" href="register.html"><i class="fa-solid fa-user-plus"></i><span>Sign Up</span></a>`;
 
     const navAuthDesktop = user
-      ? `<a class="dt-nav-link ${active === 'dashboard.html' ? 'is-active' : ''}" href="dashboard.html"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></a>
-         <a class="dt-nav-link dt-nav-logout" href="#" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>`
-      : `<a class="dt-nav-link ${active === 'login.html' ? 'is-active' : ''}" href="login.html"><i class="fa-solid fa-right-to-bracket"></i><span>Login</span></a>
-         <a class="btn btn-digitour-gold btn-sm dt-nav-cta" href="register.html">Register</a>`;
+      ? `<a class="dt-pill-btn dt-pill-ghost ${active === 'dashboard.html' ? 'is-active' : ''}" href="dashboard.html"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></a>
+         <a class="dt-pill-btn dt-pill-danger" href="#" data-logout><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>`
+      : `<a class="dt-pill-btn dt-pill-ghost ${active === 'login.html' ? 'is-active' : ''}" href="login.html"><i class="fa-solid fa-right-to-bracket"></i><span>Login</span></a>
+         <a class="dt-pill-btn dt-pill-gold" href="register.html"><i class="fa-solid fa-user-plus"></i><span>Sign Up</span></a>`;
 
     const navAuthMobile = user
       ? `<a class="dt-drawer-link" href="dashboard.html" data-drawer-close><i class="fa-solid fa-gauge"></i> Dashboard</a>
          <a class="dt-drawer-link text-danger" href="#" data-logout data-drawer-close><i class="fa-solid fa-right-from-bracket"></i> Logout</a>`
       : `<a class="dt-drawer-link" href="login.html" data-drawer-close><i class="fa-solid fa-right-to-bracket"></i> Login</a>
-         <a class="btn btn-digitour-gold w-100 mt-2" href="register.html" data-drawer-close>Create account</a>`;
+         <a class="dt-pill-btn dt-pill-gold w-100 justify-content-center mt-2" href="register.html" data-drawer-close><i class="fa-solid fa-user-plus"></i><span>Create account</span></a>`;
 
-    const prefs = (window.DigiStorage && DigiStorage.getPrefs()) || { lang: 'en', contrast: false };
+    const lang = (window.DigiTranslate && DigiTranslate.lang()) ||
+      ((window.DigiStorage && DigiStorage.getPrefs().lang) || 'en');
     const prefsBar = `
-      <div class="dt-prefs-bar" role="group" aria-label="Display preferences">
-        <button type="button" data-set-lang="en" class="${prefs.lang !== 'fr' ? 'is-active' : ''}" title="English">EN</button>
-        <button type="button" data-set-lang="fr" class="${prefs.lang === 'fr' ? 'is-active' : ''}" title="Français">FR</button>
-        <button type="button" data-toggle-contrast class="${prefs.contrast ? 'is-active' : ''}" title="High contrast"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      <div class="dt-prefs-bar" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en" class="dt-lang-btn ${lang !== 'fr' ? 'is-active' : ''}" title="English">EN</button>
+        <button type="button" data-set-lang="fr" class="dt-lang-btn ${lang === 'fr' ? 'is-active' : ''}" title="Français">FR</button>
       </div>`;
 
     const backBtn = !isHome
@@ -344,20 +347,20 @@
       : '';
 
     const header = `
-
-<div class="dt-page-bg" id="dtPageBg" aria-hidden="true">${bgLayers}<div class="dt-page-bg-wash"></div></div>
+<a class="dt-skip-link" href="#main-content" data-i18n="skip">${t('skip')}</a>
+${isMap ? '' : `<div class="dt-page-bg" id="dtPageBg" aria-hidden="true">${bgLayers}<div class="dt-page-bg-wash"></div></div>`}
 <div id="scroll-progress"></div>
 <div class="top-bar d-none d-lg-block">
   <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
     <div>
       <i class="fa-solid fa-location-dot me-2" style="color:#FEBD69"></i>
-      Discover Ghana's premier attractions &amp; accommodation
+      <span data-i18n="discover">${t('discover')}</span>
       <span class="mx-2 opacity-50">|</span>
       <i class="fa-solid fa-envelope me-1" style="color:#FEBD69"></i> ${esc(meta.email_info || 'info@digitour.gh')}
       <span class="mx-2 opacity-50">|</span>
       <a href="${wa}" target="_blank" rel="noopener"><i class="fab fa-whatsapp me-1"></i> WhatsApp ${esc(phone)}</a>
       <span class="mx-2 opacity-50">|</span>
-      <a href="${tel}"><i class="fa-solid fa-phone me-1"></i> Call</a>
+      <a href="${tel}"><i class="fa-solid fa-phone me-1"></i> <span data-i18n="call">${t('call')}</span></a>
     </div>
     <div class="d-flex align-items-center gap-3">${prefsBar}${topAuth}</div>
   </div>
@@ -372,10 +375,10 @@
       </a>
     </div>
     <nav class="dt-nav-desktop" aria-label="Primary">
-      <a class="dt-nav-link ${isHome ? 'is-active' : ''}" href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
-      <a class="dt-nav-link ${active.includes('destination') ? 'is-active' : ''}" href="destinations.html"><i class="fa-solid fa-map-location-dot"></i><span>Destinations</span></a>
-      <a class="dt-nav-link ${active === 'map.html' ? 'is-active' : ''}" href="map.html"><i class="fa-solid fa-globe-africa"></i><span>Map</span></a>
-      <a class="dt-nav-link ${active === 'inquiry.html' ? 'is-active' : ''}" href="inquiry.html"><i class="fa-solid fa-circle-question"></i><span>Inquiries</span></a>
+      <a class="dt-nav-link ${isHome ? 'is-active' : ''}" href="index.html"><i class="fa-solid fa-house"></i><span data-i18n="home">${t('home')}</span></a>
+      <a class="dt-nav-link ${active.includes('destination') ? 'is-active' : ''}" href="destinations.html"><i class="fa-solid fa-map-location-dot"></i><span data-i18n="destinations">${t('destinations')}</span></a>
+      <a class="dt-nav-link ${active === 'map.html' ? 'is-active' : ''}" href="map.html"><i class="fa-solid fa-globe-africa"></i><span data-i18n="map">${t('map')}</span></a>
+      <a class="dt-nav-link ${active === 'inquiry.html' ? 'is-active' : ''}" href="inquiry.html"><i class="fa-solid fa-circle-question"></i><span data-i18n="inquiries">${t('inquiries')}</span></a>
       ${navAuthDesktop}
     </nav>
     <div class="d-flex align-items-center gap-2">
@@ -396,11 +399,11 @@
     <button type="button" class="dt-drawer-close" id="dtMenuClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
   </div>
   <nav class="dt-drawer-nav">
-    <a class="dt-drawer-link ${isHome ? 'is-active' : ''}" href="index.html" data-drawer-close><i class="fa-solid fa-house"></i> Home</a>
-    <a class="dt-drawer-link ${active.includes('destination') ? 'is-active' : ''}" href="destinations.html" data-drawer-close><i class="fa-solid fa-map-location-dot"></i> Destinations</a>
-    <a class="dt-drawer-link ${active === 'map.html' ? 'is-active' : ''}" href="map.html" data-drawer-close><i class="fa-solid fa-globe-africa"></i> Map</a>
-    <a class="dt-drawer-link ${active === 'inquiry.html' ? 'is-active' : ''}" href="inquiry.html" data-drawer-close><i class="fa-solid fa-circle-question"></i> Inquiries</a>
-    <a class="dt-drawer-link" href="#" data-open-chat data-drawer-close><i class="fa-solid fa-comments"></i> Ask DigiGuide</a>
+    <a class="dt-drawer-link ${isHome ? 'is-active' : ''}" href="index.html" data-drawer-close><i class="fa-solid fa-house"></i> <span data-i18n="home">${t('home')}</span></a>
+    <a class="dt-drawer-link ${active.includes('destination') ? 'is-active' : ''}" href="destinations.html" data-drawer-close><i class="fa-solid fa-map-location-dot"></i> <span data-i18n="destinations">${t('destinations')}</span></a>
+    <a class="dt-drawer-link ${active === 'map.html' ? 'is-active' : ''}" href="map.html" data-drawer-close><i class="fa-solid fa-globe-africa"></i> <span data-i18n="map">${t('map')}</span></a>
+    <a class="dt-drawer-link ${active === 'inquiry.html' ? 'is-active' : ''}" href="inquiry.html" data-drawer-close><i class="fa-solid fa-circle-question"></i> <span data-i18n="inquiries">${t('inquiries')}</span></a>
+    <a class="dt-drawer-link" href="#" data-open-chat data-drawer-close><i class="fa-solid fa-comments"></i> <span data-i18n="askDigiguide">${t('askDigiguide')}</span></a>
   </nav>
   <div class="dt-drawer-actions">
     ${navAuthMobile}
@@ -420,7 +423,7 @@
         <a class="navbar-brand text-white fw-bold fs-3 mb-3 d-block" href="index.html" style="font-family:var(--font-display)">
           <i class="fa-solid fa-compass me-2" style="color:#FF9900"></i> Digi<span style="color:#FEBD69">Tour</span> Ghana
         </a>
-        <p>Smart tourism information, accommodation, and booking for Ghana. Discover attractions, compare nearby hotels, and reserve with confidence.</p>
+        <p data-i18n="footerTag">${t('footerTag')}</p>
         <div class="d-flex gap-2 mt-3">
           <a href="#" class="btn btn-outline-light btn-sm rounded-circle" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="btn btn-outline-light btn-sm rounded-circle" aria-label="X"><i class="fab fa-x-twitter"></i></a>
@@ -429,18 +432,18 @@
         </div>
       </div>
       <div class="col-lg-2 col-md-6">
-        <h5>Quick Links</h5>
+        <h5 data-i18n="quickLinks">${t('quickLinks')}</h5>
         <ul class="list-unstyled">
-          <li class="mb-2"><a href="index.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Home</a></li>
-          <li class="mb-2"><a href="destinations.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Destinations</a></li>
-          <li class="mb-2"><a href="map.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Tourism Map</a></li>
-          <li class="mb-2"><a href="inquiry.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Inquiries</a></li>
-          <li class="mb-2"><a href="login.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Login</a></li>
-          <li class="mb-2"><a href="register.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> Sign Up</a></li>
+          <li class="mb-2"><a href="index.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> <span data-i18n="home">${t('home')}</span></a></li>
+          <li class="mb-2"><a href="destinations.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> <span data-i18n="destinations">${t('destinations')}</span></a></li>
+          <li class="mb-2"><a href="map.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> <span data-i18n="tourismMap">${t('tourismMap')}</span></a></li>
+          <li class="mb-2"><a href="inquiry.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> <span data-i18n="inquiries">${t('inquiries')}</span></a></li>
+          <li class="mb-2"><a href="login.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> <span data-i18n="login">${t('login')}</span></a></li>
+          <li class="mb-2"><a href="register.html"><i class="fa-solid fa-angle-right me-2" style="color:#FF9900"></i> <span data-i18n="register">${t('register')}</span></a></li>
         </ul>
       </div>
       <div class="col-lg-3 col-md-6">
-        <h5>Top Regions</h5>
+        <h5 data-i18n="topRegions">${t('topRegions')}</h5>
         <ul class="list-unstyled">
           <li class="mb-2"><a href="destinations.html?region=Central+Region"><i class="fa-solid fa-location-dot me-2" style="color:#FEBD69"></i> Central Region</a></li>
           <li class="mb-2"><a href="destinations.html?region=Greater+Accra"><i class="fa-solid fa-location-dot me-2" style="color:#FEBD69"></i> Greater Accra</a></li>
@@ -450,7 +453,7 @@
         </ul>
       </div>
       <div class="col-lg-3 col-md-6">
-        <h5>Tourism Support</h5>
+        <h5 data-i18n="tourismSupport">${t('tourismSupport')}</h5>
         <p><i class="fa-solid fa-map-marker-alt me-2" style="color:#FF9900"></i> ${esc(meta.address || 'Tourism Board Building, Accra, Ghana')}</p>
         <p><i class="fa-solid fa-phone me-2" style="color:#FF9900"></i><a href="${tel}">${esc(phone)}</a></p>
         <p><i class="fab fa-whatsapp me-2" style="color:#25D366"></i><a href="${wa}" target="_blank" rel="noopener">WhatsApp Admin</a></p>
@@ -468,10 +471,21 @@
     </div>
   </div>
 </footer>
-<button type="button" class="dt-back-top" id="dtBackTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
-<div class="dt-contact-float" id="dtContactFloat">
-  <a class="dt-float-btn dt-float-call" href="${tel}" title="Call Admin ${esc(phone)}" aria-label="Call Admin"><i class="fa-solid fa-phone"></i><span>Call</span></a>
-  <a class="dt-float-btn dt-float-wa" href="${wa}?text=${encodeURIComponent('Hello DigiTour Admin, I need help with a destination / hotel booking.')}" target="_blank" rel="noopener" title="WhatsApp ${esc(phone)}" aria-label="WhatsApp Admin"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+<button type="button" class="dt-back-top" id="dtBackTop" data-i18n-aria="backTop" aria-label="${t('backTop')}"><i class="fa-solid fa-arrow-up"></i></button>
+<div class="dt-help-float" id="dtHelpFloat">
+  <div class="dt-help-menu" id="dtHelpMenu" hidden>
+    <a class="dt-help-option dt-help-call" href="${tel}">
+      <i class="fa-solid fa-phone"></i>
+      <span><strong data-i18n="call">${t('call')}</strong><small>${esc(phone)}</small></span>
+    </a>
+    <a class="dt-help-option dt-help-wa" href="${wa}?text=${encodeURIComponent('Hello DigiTour Admin, I need help with a destination / hotel booking.')}" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp"></i>
+      <span><strong data-i18n="whatsapp">${t('whatsapp')}</strong><small>${esc(phone)}</small></span>
+    </a>
+  </div>
+  <button type="button" class="dt-float-btn dt-float-help" id="dtHelpToggle" aria-expanded="false" aria-controls="dtHelpMenu" aria-label="Help">
+    <i class="fa-solid fa-headset"></i>
+  </button>
 </div>`;
 
     const headerMount = document.getElementById('dt-header');
@@ -481,8 +495,137 @@
 
     bindShellEvents();
     bindMobileNav();
+    bindHelpFloat();
     if (window.DigiStorage) DigiStorage.setPrefs(DigiStorage.getPrefs());
+    if (window.DigiTranslate) DigiTranslate.syncButtons();
     registerServiceWorker();
+  }
+
+  function makeDraggable(el, handle, storageKey) {
+    if (!el || !handle) return;
+
+    if (storageKey) {
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey));
+        if (saved && typeof saved.left === 'number' && typeof saved.top === 'number') {
+          const maxLeft = Math.max(10, window.innerWidth - el.offsetWidth - 10);
+          const maxTop = Math.max(10, window.innerHeight - el.offsetHeight - 10);
+          const left = Math.max(10, Math.min(maxLeft, saved.left));
+          const top = Math.max(10, Math.min(maxTop, saved.top));
+          el.style.position = 'fixed';
+          el.style.left = left + 'px';
+          el.style.top = top + 'px';
+          el.style.right = 'auto';
+          el.style.bottom = 'auto';
+        }
+      } catch (_) {}
+    }
+
+    let startX = 0, startY = 0;
+    let initialLeft = 0, initialTop = 0;
+    let isDragging = false;
+
+    function onPointerDown(e) {
+      if (e.type === 'mousedown' && e.button !== 0) return;
+
+      const rect = el.getBoundingClientRect();
+      initialLeft = rect.left;
+      initialTop = rect.top;
+
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      startX = clientX;
+      startY = clientY;
+      isDragging = false;
+
+      document.addEventListener('mousemove', onPointerMove, { passive: false });
+      document.addEventListener('mouseup', onPointerUp);
+      document.addEventListener('touchmove', onPointerMove, { passive: false });
+      document.addEventListener('touchend', onPointerUp);
+    }
+
+    function onPointerMove(e) {
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+
+      if (!isDragging && Math.hypot(dx, dy) > 5) {
+        isDragging = true;
+        el.classList.add('is-dragging');
+        handle._wasDragged = true;
+      }
+
+      if (isDragging) {
+        if (e.cancelable) e.preventDefault();
+
+        const maxLeft = Math.max(10, window.innerWidth - el.offsetWidth - 10);
+        const maxTop = Math.max(10, window.innerHeight - el.offsetHeight - 10);
+
+        const newLeft = Math.max(10, Math.min(maxLeft, initialLeft + dx));
+        const newTop = Math.max(10, Math.min(maxTop, initialTop + dy));
+
+        el.style.position = 'fixed';
+        el.style.left = newLeft + 'px';
+        el.style.top = newTop + 'px';
+        el.style.right = 'auto';
+        el.style.bottom = 'auto';
+      }
+    }
+
+    function onPointerUp() {
+      document.removeEventListener('mousemove', onPointerMove);
+      document.removeEventListener('mouseup', onPointerUp);
+      document.removeEventListener('touchmove', onPointerMove);
+      document.removeEventListener('touchend', onPointerUp);
+
+      if (isDragging) {
+        el.classList.remove('is-dragging');
+        setTimeout(() => { handle._wasDragged = false; }, 100);
+
+        if (storageKey) {
+          try {
+            const rect = el.getBoundingClientRect();
+            localStorage.setItem(storageKey, JSON.stringify({ left: rect.left, top: rect.top }));
+          } catch (_) {}
+        }
+      }
+    }
+
+    handle.addEventListener('mousedown', onPointerDown);
+    handle.addEventListener('touchstart', onPointerDown, { passive: true });
+  }
+
+  function bindHelpFloat() {
+    const root = document.getElementById('dtHelpFloat');
+    const toggle = document.getElementById('dtHelpToggle');
+    const menu = document.getElementById('dtHelpMenu');
+    if (!root || !toggle || !menu) return;
+
+    makeDraggable(root, toggle, 'dt_pos_help');
+
+    const setOpen = (open) => {
+      root.classList.toggle('is-open', open);
+      menu.hidden = !open;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+
+    toggle.addEventListener('click', (e) => {
+      if (toggle._wasDragged) {
+        toggle._wasDragged = false;
+        return;
+      }
+      e.stopPropagation();
+      setOpen(menu.hidden);
+    });
+    document.addEventListener('click', (e) => {
+      if (!root.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
   }
 
   function registerServiceWorker() {
@@ -528,24 +671,7 @@
         setTimeout(() => { window.location.href = 'index.html'; }, 600);
       });
     });
-    document.querySelectorAll('[data-set-lang]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        if (!window.DigiStorage) return;
-        DigiStorage.setPrefs({ lang: btn.getAttribute('data-set-lang') });
-        document.querySelectorAll('[data-set-lang]').forEach((b) => {
-          b.classList.toggle('is-active', b.getAttribute('data-set-lang') === DigiStorage.getPrefs().lang);
-        });
-        toast(DigiStorage.getPrefs().lang === 'fr' ? 'Langue : Français (aperçu)' : 'Language: English', 'info');
-      });
-    });
-    document.querySelectorAll('[data-toggle-contrast]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        if (!window.DigiStorage) return;
-        const next = !DigiStorage.getPrefs().contrast;
-        DigiStorage.setPrefs({ contrast: next });
-        btn.classList.toggle('is-active', next);
-      });
-    });
+    // Language EN/FR is handled globally by assets/js/translate.js (event delegation)
   }
 
   function bindSearchFilters() {
@@ -586,7 +712,7 @@
   Object.assign(DT, {
     esc, bentoMeta, formatCurrency, getCurrency, setCurrency, getUser, setUser, isLoggedIn,
     renderStars, shortDesc, qs, pageName, destById, hotelById, hotelsForDest, reviewsForDest,
-    toast, bentoDestCard, bentoHotelCard, renderShell, bindSearchFilters, updateCurrencyUI,
+    toast, bentoDestCard, bentoHotelCard, renderShell, bindSearchFilters, updateCurrencyUI, makeDraggable,
   });
 
   global.DigiTour = DT;

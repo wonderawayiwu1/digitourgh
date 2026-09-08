@@ -16,8 +16,18 @@
   font-weight: 700;
   font-size: 0.9rem;
   box-shadow: 0 10px 28px rgba(35, 47, 62, 0.28);
-  cursor: pointer;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dt-chat-fab.is-dragging, .dt-help-float.is-dragging {
+  cursor: grabbing !important;
+  transition: none !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4) !important;
+  opacity: 0.95;
 }
 
 .dt-chat-fab:hover {
@@ -33,8 +43,8 @@
   right: 1rem;
   bottom: 5.2rem;
   z-index: 9994;
-  width: min(100% - 1.5rem, 400px);
-  height: min(78vh, 620px);
+  width: min(100% - 1.25rem, 440px);
+  height: min(84vh, 720px);
   display: flex;
   flex-direction: column;
   background: #fff;

@@ -92,7 +92,7 @@
       document.title = title;
     } else if (page === 'map.html') {
       title = 'Interactive Ghana Tourism Map | DigiTour Ghana';
-      description = 'Explore DigiTour destinations on an interactive map of Ghana. Filter by region and category, then open hotels nearby.';
+      description = 'Explore DigiTour destinations on a full-screen MapTiler 3D map of Ghana with satellite, terrain, and streets.';
       document.title = title;
     } else if (page === 'index.html') {
       title = 'DigiTour Ghana | Discover Attractions & Book Hotels';

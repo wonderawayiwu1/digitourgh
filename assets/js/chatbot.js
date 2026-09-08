@@ -3,11 +3,16 @@
   'use strict';
 
   const SUGGESTIONS = [
-    'Best places to visit in Central Region?',
-    'Hotels near Kakum National Park',
-    'Tell me about Cape Coast Castle',
-    'What can I do in Accra in one day?',
+    'What should I know about Kakum National Park?',
+    'Plan a 5-day Ghana trip with DigiTour hotels',
+    'Best beaches in Ghana and nearby stays',
+    'How do I book a hotel and use the map?',
   ];
+
+  const STOP = {
+    the: 1, and: 1, for: 1, with: 1, from: 1, what: 1, where: 1, when: 1, how: 1,
+    are: 1, is: 1, can: 1, you: 1, about: 1, tell: 1, please: 1, near: 1, best: 1,
+  };
 
   const EMOJI_ICONS = [
     [/📞|☎️|📱|☎/gu, '<i class="fa-solid fa-phone dt-md-ico" aria-hidden="true"></i>'],
@@ -44,14 +49,20 @@
     return out;
   }
 
-  function inlineFormat(text) {
-    let s = esc(text);
+  function stripHtmlTagsAndAttrs(str) {
+    let s = String(str || '');
+    // Convert any raw HTML links <a href="URL"...>label</a> to markdown [label](URL)
+    s = s.replace(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>(.*?)<\/a>/gi, '[$2]($1)');
+    // Strip any hallucinated HTML attributes or raw HTML tags
+    s = s.replace(/target=["']?_blank["']?/gi, '');
+    s = s.replace(/rel=["']?noopener["']?/gi, '');
+    s = s.replace(/<[^>]+>/g, '');
+    return s;
+  }
 
-    // Restore FA icon HTML we injected before escaping (placeholder approach)
-    // Icons are inserted AFTER esc via markers — so call order matters.
-    // We escape first, then apply markdown, then emoji was already converted to HTML
-    // before esc — so emoji HTML got escaped. Fix: convert emoji after inline on
-    // escaped text using unicode only, OR convert emoji to markers.
+  function inlineFormat(text) {
+    const cleanInput = stripHtmlTagsAndAttrs(text);
+    let s = esc(cleanInput);
 
     // Bold / italic / underline / strike / code
     s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
@@ -63,18 +74,34 @@
     s = s.replace(/~~(.+?)~~/g, '<del>$1</del>');
     s = s.replace(/\+\+(.+?)\+\+/g, '<u>$1</u>');
 
+    // Phone numbers (Ghana style) — run BEFORE URL replacements so digits in URLs/hrefs are not mutated
+    s = s.replace(/(^|[\s(>:;,.])((?:\+?233|0)\s*\d{2}\s*\d{3}\s*\d{4})(?!\d)/gi, (full, prefix, num) => {
+      const digits = num.replace(/\D/g, '');
+      const tel = digits.startsWith('233') ? `+${digits}` : digits;
+      return `${prefix}<a class="dt-md-btn dt-md-btn-call" href="tel:${tel}"><i class="fa-solid fa-phone"></i> ${num.trim()}</a>`;
+    });
+
     // Markdown links [label](url)
     s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
       const safeUrl = String(url).replace(/&amp;/g, '&').trim();
       if (/^https?:\/\//i.test(safeUrl) || /\.html(\?|$)/i.test(safeUrl)) {
         const isBook = /book-hotel\.html/i.test(safeUrl);
         const isDest = /destination-detail\.html/i.test(safeUrl);
-        const cls = isBook ? 'dt-md-btn dt-md-btn-book' : isDest ? 'dt-md-btn dt-md-btn-dest' : 'dt-md-link';
+        const isWa = /wa\.me/i.test(safeUrl);
+        const cls = isBook
+          ? 'dt-md-btn dt-md-btn-book'
+          : isDest
+            ? 'dt-md-btn dt-md-btn-dest'
+            : isWa
+              ? 'dt-md-btn dt-md-btn-wa'
+              : 'dt-md-link';
         const icon = isBook
           ? '<i class="fa-solid fa-calendar-check"></i> '
           : isDest
             ? '<i class="fa-solid fa-map-location-dot"></i> '
-            : '';
+            : isWa
+              ? '<i class="fab fa-whatsapp"></i> '
+              : '';
         const target = /^https?:\/\//i.test(safeUrl) ? ' target="_blank" rel="noopener"' : '';
         return `<a class="${cls}" href="${esc(safeUrl)}"${target}>${icon}${label}</a>`;
       }
@@ -95,26 +122,15 @@
       '$1<a class="dt-md-link" href="$2">Browse destinations</a>'
     );
 
-    // Bare URLs / wa.me / tel
-    s = s.replace(/(https?:\/\/[^\s<]+)/g, (url) => {
-      const clean = url.replace(/[.,);]+$/, '');
+    // Bare URLs / wa.me (must be preceded by start or space/bracket, NOT inside an HTML tag attribute)
+    s = s.replace(/(^|[\s(>])(https?:\/\/[^\s<"'\&]+)/g, (full, prefix, url) => {
+      const clean = url.replace(/[.,);&]+$/, '');
       const trail = url.slice(clean.length);
       if (/wa\.me/i.test(clean)) {
-        return `<a class="dt-md-btn dt-md-btn-wa" href="${clean}" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>${trail}`;
+        return `${prefix}<a class="dt-md-btn dt-md-btn-wa" href="${esc(clean)}" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>${trail}`;
       }
-      return `<a class="dt-md-link" href="${clean}" target="_blank" rel="noopener">${clean.replace(/^https?:\/\//, '')}</a>${trail}`;
+      return `${prefix}<a class="dt-md-link" href="${esc(clean)}" target="_blank" rel="noopener">${esc(clean.replace(/^https?:\/\//, ''))}</a>${trail}`;
     });
-
-    // Phone numbers (Ghana style)
-    s = s.replace(
-      /(?:Call(?:\s+us)?[:\s]*)?(?:\+?233|0)\s*\d{2}\s*\d{3}\s*\d{4}/gi,
-      (m) => {
-        const digits = m.replace(/\D/g, '');
-        const tel = digits.startsWith('233') ? `+${digits}` : digits;
-        const label = m.replace(/^Call(?:\s+us)?[:\s]*/i, '').trim() || m;
-        return `<a class="dt-md-btn dt-md-btn-call" href="tel:${tel}"><i class="fa-solid fa-phone"></i> ${esc(label)}</a>`;
-      }
-    );
 
     return s;
   }
@@ -345,14 +361,14 @@
           <div class="dt-chat-avatar" aria-hidden="true"><i class="fa-solid fa-compass"></i></div>
           <div class="dt-chat-head-text">
             <strong>DigiGuide</strong>
-            <span>Ghana travel AI · DigiTour</span>
+            <span>Google + catalogue · Ghana travel AI</span>
           </div>
           <button type="button" class="dt-chat-close" id="dtChatClose" aria-label="Close chat"><i class="fa-solid fa-xmark"></i></button>
         </header>
         <div class="dt-chat-msgs" id="dtChatMsgs"></div>
         <div class="dt-chat-suggest" id="dtChatSuggest"></div>
         <form class="dt-chat-form" id="dtChatForm">
-          <input type="text" id="dtChatInput" maxlength="1200" placeholder="Ask about destinations, hotels…" autocomplete="off" required>
+          <input type="text" id="dtChatInput" maxlength="2000" placeholder="Ask about Ghana travel, destinations, hotels…" autocomplete="off" required>
           <button type="submit" id="dtChatSend" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button>
         </form>
       </section>`;
@@ -449,91 +465,256 @@
       return null;
     }
 
+    function stripText(html) {
+      return String(html || '')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function tokensOf(q) {
+      return String(q || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .split(/\s+/)
+        .filter((w) => w.length > 2 && !STOP[w]);
+    }
+
+    function retrieveLocal(catalog, question) {
+      const tokens = tokensOf(question);
+      const dests = catalog.destinations || [];
+      const hotels = catalog.hotels || [];
+      const score = (text) => {
+        const t = String(text || '').toLowerCase();
+        let s = 0;
+        tokens.forEach((tok) => {
+          if (t.includes(tok)) s += tok.length > 5 ? 4 : 2;
+        });
+        return s;
+      };
+      let destMatches = dests
+        .map((d) => ({
+          d,
+          s: score([d.title, d.region, d.category, d.location_contact, d.description, d.history].join(' ')),
+        }))
+        .filter((x) => x.s > 0)
+        .sort((a, b) => b.s - a.s)
+        .slice(0, 6)
+        .map((x) => x.d);
+      let hotelMatches = hotels
+        .map((h) => ({
+          h,
+          s: score([h.name, h.region, h.destination_title, h.description].join(' ')),
+        }))
+        .filter((x) => x.s > 0)
+        .sort((a, b) => b.s - a.s)
+        .slice(0, 8)
+        .map((x) => x.h);
+      if (!destMatches.length) destMatches = dests.filter((d) => d.is_featured).slice(0, 6);
+      if (destMatches.length && hotelMatches.length < 4) {
+        const ids = new Set(destMatches.map((d) => String(d.id)));
+        hotels.forEach((h) => {
+          if (ids.has(String(h.destination_id)) && !hotelMatches.some((x) => x.id === h.id)) hotelMatches.push(h);
+        });
+        hotelMatches = hotelMatches.slice(0, 10);
+      }
+      return { destMatches, hotelMatches };
+    }
+
+    async function webSearchLocal(question) {
+      const results = [];
+      const q = /\bghana\b/i.test(question) ? question : question + ' Ghana tourism';
+      try {
+        const search = await fetch(
+          'https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=' +
+            encodeURIComponent(q) +
+            '&srlimit=4&utf8=&format=json&origin=*'
+        );
+        if (search.ok) {
+          const data = await search.json();
+          const hits = ((data.query && data.query.search) || []).slice(0, 3);
+          await Promise.all(
+            hits.map(async (hit) => {
+              try {
+                const ex = await fetch(
+                  'https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=0&explaintext=1&exchars=1600&redirects=1&format=json&origin=*&titles=' +
+                    encodeURIComponent(hit.title)
+                );
+                if (!ex.ok) return;
+                const body = await ex.json();
+                const pages = (body.query && body.query.pages) || {};
+                Object.keys(pages).forEach((id) => {
+                  const p = pages[id];
+                  if (p && p.extract) {
+                    results.push({
+                      source: 'Wikipedia',
+                      title: p.title,
+                      snippet: p.extract,
+                      url: 'https://en.wikipedia.org/wiki/' + encodeURIComponent(p.title.replace(/ /g, '_')),
+                    });
+                  }
+                });
+              } catch (_) {}
+            })
+          );
+        }
+      } catch (_) {}
+      try {
+        const voy = await fetch(
+          'https://en.wikivoyage.org/w/api.php?action=query&list=search&srsearch=' +
+            encodeURIComponent(q) +
+            '&srlimit=2&format=json&origin=*'
+        );
+        if (voy.ok) {
+          const data = await voy.json();
+          ((data.query && data.query.search) || []).slice(0, 2).forEach((hit) => {
+            results.push({
+              source: 'Wikivoyage',
+              title: hit.title,
+              snippet: stripText(hit.snippet || hit.title),
+              url: 'https://en.wikivoyage.org/wiki/' + encodeURIComponent(hit.title.replace(/ /g, '_')),
+            });
+          });
+        }
+      } catch (_) {}
+      return results.slice(0, 8);
+    }
+
     async function getLocalCatalog() {
       if (cachedCatalog) return cachedCatalog;
       try {
-        const [dRes, hRes] = await Promise.all([
-          fetch('data/destinations.json').catch(() => fetch('data/destinations_catalog.json')),
-          fetch('data/hotels.json').catch(() => fetch('data/hotels_catalog.json'))
+        const [dRes, hRes, mRes, rRes] = await Promise.all([
+          fetch('data/destinations.json?v=cat122'),
+          fetch('data/hotels.json'),
+          fetch('data/meta.json?v=cat122'),
+          fetch('data/reviews.json'),
         ]);
-        const destinations = (dRes && dRes.ok) ? await dRes.json() : [];
-        const hotels = (hRes && hRes.ok) ? await hRes.json() : [];
-        cachedCatalog = { destinations, hotels };
+        cachedCatalog = {
+          destinations: dRes.ok ? await dRes.json() : [],
+          hotels: hRes.ok ? await hRes.json() : [],
+          meta: mRes.ok ? await mRes.json() : {},
+          reviews: rRes.ok ? await rRes.json() : [],
+        };
       } catch (_) {
-        cachedCatalog = { destinations: [], hotels: [] };
+        cachedCatalog = { destinations: [], hotels: [], meta: {}, reviews: [] };
       }
       return cachedCatalog;
     }
 
     async function askLocalFallback(q, historyList) {
-      // 1. Check if local node dev server is running on port 8888
       if (location.port !== '8888') {
         try {
           const devRes = await fetch('http://localhost:8888/.netlify/functions/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: q, history: historyList.slice(-6) })
+            body: JSON.stringify({ message: q, history: historyList.slice(-8) }),
           });
           if (devRes.ok) {
             const devData = await devRes.json();
             if (devData && devData.answer) {
               history.push({ role: 'assistant', content: devData.answer });
-              addBubble('assistant', devData.answer, 'Local Server (port 8888)');
+              const note = devData.usedGoogle ? 'Google + live DigiTour catalogue' : 'Local Server (port 8888)';
+              addBubble('assistant', devData.answer, note);
               return true;
             }
           }
         } catch (_) {}
       }
 
-      // 2. Direct browser fallback using .env GROQ_API_KEY
       const apiKey = await getLocalApiKey();
       if (!apiKey) return false;
 
       const catalogData = await getLocalCatalog();
-      const destMatches = (catalogData.destinations || []).slice(0, 5);
-      const hotelMatches = (catalogData.hotels || []).slice(0, 5);
+      const retrieved = retrieveLocal(catalogData, q);
+      const webResults = await webSearchLocal(q);
+      const site = catalogData.meta || {};
 
-      const systemPrompt = `You are DigiGuide, DigiTour Ghana's friendly tourism AI assistant.
+      const destPayload = retrieved.destMatches.map((d) => ({
+        id: d.id,
+        title: d.title,
+        region: d.region,
+        category: d.category,
+        location: d.location_contact,
+        description: stripText(d.description).slice(0, 1600),
+        history: stripText(d.history).slice(0, 1200),
+        url: 'destination-detail.html?id=' + d.id,
+      }));
+      const hotelPayload = retrieved.hotelMatches.map((h) => ({
+        id: h.id,
+        name: h.name,
+        region: h.region,
+        near: h.destination_title,
+        price_usd: h.price_per_night,
+        beds: h.room_capacity,
+        description: h.description,
+        url: 'book-hotel.html?hotel_id=' + h.id,
+      }));
 
-FORMATTING RULES (critical — replies show in a narrow mobile chat panel):
-- Use clean Markdown only: **bold**, *italic*, headings (###), bullet lists, numbered lists.
-- NEVER use emojis or emoji shortcodes. Use plain words or Markdown links/icons.
-- Turn booking/detail paths into markdown links: [Book now](book-hotel.html?hotel_id=ID) or [View destination](destination-detail.html?id=ID)
-- Keep answers concise.
+      const systemPrompt = `You are DigiGuide, DigiTour Ghana's expert tourism AI concierge.
 
-CATALOGUE HIGHLIGHTS:
-Destinations: ${destMatches.map(d => `${d.name || d.title} (${d.region || ''})`).join(', ')}
-Hotels: ${hotelMatches.map(h => `${h.name} (${h.price_per_night || h.price || '$95'}/night)`).join(', ')}`;
+MISSION: Give thorough, accurate, well-structured answers (typically 350–900 words for place questions). Prefer depth over brevity.
+
+SOURCE ORDER:
+1. WEB / WIKIPEDIA RESULTS first for breadth and current travel context.
+2. DIGITOUR CATALOGUE as ground truth for destinations we list, hotel prices, IDs, and booking links. Never invent prices or IDs.
+
+FORMATTING: clean Markdown; no emojis; no pipe tables.
+Hotel cards:
+### 1. Hotel Name
+- Near: Attraction
+- Price: $95/night · Beds: 2
+- Summary: useful detail
+- Book: [Book now](book-hotel.html?hotel_id=4)
+Contact: Call ${site.phone_local || '0546004395'} · WhatsApp ${site.whatsapp || 'https://wa.me/233546004395'}
+
+PRODUCT: ${site.total_destinations || 122} destinations and ${site.total_hotels || 97} hotels across 16 regions. Pages: index.html, destinations.html, destination-detail.html?id=, book-hotel.html?hotel_id=, map.html (MapTiler 3D streets/aerial/satellite + free fallback), inquiry.html, login.html, register.html, dashboard.html. Help float = Call or WhatsApp. EN/FR toggle. Currency USD/GHS/EUR. Loyalty +25 register, +50 booking, +15 review. Demo login kwame@example.com / demo123.
+
+WEB RESULTS:
+${JSON.stringify(webResults)}
+
+MATCHED DESTINATIONS:
+${JSON.stringify(destPayload)}
+
+MATCHED HOTELS:
+${JSON.stringify(hotelPayload)}`;
 
       try {
         const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${apiKey}`,
-            'Content-Type': 'application/json'
+            Authorization: 'Bearer ' + apiKey,
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             model: 'openai/gpt-oss-120b',
+            temperature: 0.4,
+            max_tokens: 3200,
             messages: [
               { role: 'system', content: systemPrompt },
-              ...historyList.slice(-6).map(h => ({ role: h.role, content: h.content })),
-              { role: 'user', content: q }
-            ]
-          })
+              ...historyList.slice(-8).map((h) => ({ role: h.role, content: h.content })),
+              { role: 'user', content: q },
+            ],
+          }),
         });
 
         if (!groqRes.ok) {
           const errData = await groqRes.json().catch(() => ({}));
           const errMsg = (errData && errData.error && errData.error.message) || 'Groq API error';
-          addBubble('assistant', `Local API Error: ${errMsg}`);
+          addBubble('assistant', 'Local API Error: ' + errMsg);
           return true;
         }
 
         const groqData = await groqRes.json();
-        const ans = (groqData.choices && groqData.choices[0] && groqData.choices[0].message && groqData.choices[0].message.content) || '';
+        const ans =
+          (groqData.choices &&
+            groqData.choices[0] &&
+            groqData.choices[0].message &&
+            groqData.choices[0].message.content) ||
+          '';
         if (ans) {
           history.push({ role: 'assistant', content: ans });
-          addBubble('assistant', ans, 'Local Dev Fallback (Direct Groq API)');
+          addBubble('assistant', ans, webResults.length ? 'Web + live DigiTour catalogue' : 'Live DigiTour catalogue');
           return true;
         }
       } catch (_) {}
@@ -559,11 +740,13 @@ Hotels: ${hotelMatches.map(h => `${h.name} (${h.price_per_night || h.price || '$
         if (res.ok && data.answer) {
           typing(false);
           history.push({ role: 'assistant', content: data.answer });
-          const meta = data.usedWeb
-            ? 'Catalogue + web sources'
-            : data.matches
-              ? `Matched ${data.matches.destinations} sites · ${data.matches.hotels} hotels`
-              : '';
+          const meta = data.usedGoogle
+            ? 'Google + DigiTour catalogue'
+            : data.usedWeb
+              ? 'Web + DigiTour catalogue'
+              : data.matches
+                ? `Matched ${data.matches.destinations} sites · ${data.matches.hotels} hotels`
+                : '';
           addBubble('assistant', data.answer, meta);
           return;
         }
@@ -594,7 +777,17 @@ Hotels: ${hotelMatches.map(h => `${h.name} (${h.price_per_night || h.price || '$
       }
     }
 
-    fab.addEventListener('click', () => setOpen(!panel.classList.contains('is-open')));
+    if (window.DigiTour && window.DigiTour.makeDraggable) {
+      window.DigiTour.makeDraggable(fab, fab, 'dt_pos_chat');
+    }
+
+    fab.addEventListener('click', () => {
+      if (fab._wasDragged) {
+        fab._wasDragged = false;
+        return;
+      }
+      setOpen(!panel.classList.contains('is-open'));
+    });
     closeBtn.addEventListener('click', () => setOpen(false));
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -614,7 +807,8 @@ Hotels: ${hotelMatches.map(h => `${h.name} (${h.price_per_night || h.price || '$
 
     addBubble(
       'assistant',
-      'Hi — I’m **DigiGuide**. Ask me about Ghana destinations, hotels, regions, or travel tips. I’ll use DigiTour’s catalogue first, then the web when needed.',
+      (window.DigiI18n && DigiI18n.t('digiguideHi')) ||
+        "Hi — I'm **DigiGuide**. I search the web first, then answer from DigiTour's live Ghana catalogue (destinations, hotels, map, bookings). Ask a detailed question.",
       '',
       false
     );

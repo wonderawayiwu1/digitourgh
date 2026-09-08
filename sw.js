@@ -1,16 +1,12 @@
-/* DigiTour lightweight offline shell */
-const CACHE = 'digitour-shell-v1';
+/* DigiTour lightweight offline shell — network-first for HTML/JS so map updates aren't stuck */
+const CACHE = 'digitour-shell-v5';
 const SHELL = [
   '/',
   '/index.html',
-  '/destinations.html',
-  '/map.html',
   '/assets/css/style.css',
   '/assets/css/nav-mobile.css',
   '/assets/css/chatbot.css',
-  '/assets/js/digitour-core.js',
-  '/assets/js/pages.js',
-  '/data/meta.json',
+  '/assets/css/responsive.css',
 ];
 
 self.addEventListener('install', (event) => {
@@ -29,8 +25,16 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
 
-  // Network-first for JSON/data; cache-first for shell assets
-  if (url.pathname.startsWith('/data/')) {
+  const path = url.pathname;
+  // Always prefer fresh map + scripts/styles so localhost/Netlify updates show immediately
+  const networkFirst =
+    path.endsWith('.html') ||
+    path.endsWith('.js') ||
+    path.endsWith('.css') ||
+    path.startsWith('/data/') ||
+    path.includes('map');
+
+  if (networkFirst) {
     event.respondWith(
       fetch(req)
         .then((res) => {
